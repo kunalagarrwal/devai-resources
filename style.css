@@ -1,0 +1,406 @@
+/* ============================================
+   DevAI Resources — Main Stylesheet
+   GitHub Pages: link this in each HTML file
+   WordPress: paste into Appearance > Additional CSS
+   ============================================ */
+
+:root {
+  --dark:    #0f172a;
+  --mid:     #1e293b;
+  --accent:  #6366f1;
+  --accent2: #a5b4fc;
+  --light:   #f8fafc;
+  --white:   #ffffff;
+  --text:    #1e293b;
+  --muted:   #64748b;
+  --border:  #e2e8f0;
+  --radius:  10px;
+  --font:    'Inter', 'Segoe UI', system-ui, sans-serif;
+  --max-w:   860px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  background: var(--light);
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 16px;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── HEADER ── */
+.site-header {
+  background: var(--dark);
+  border-bottom: 3px solid var(--accent);
+  padding: 0 24px;
+}
+
+.header-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.site-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.site-title a { color: #fff; }
+.site-title a:hover { color: var(--accent2); text-decoration: none; }
+
+.site-tagline {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.main-nav a {
+  color: #cbd5e1;
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, var(--dark) 0%, #1e1b4b 100%);
+  padding: 72px 24px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(1.9rem, 5vw, 3rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.hero p {
+  color: var(--accent2);
+  font-size: 1.1rem;
+  max-width: 580px;
+  margin: 0 auto 28px;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(99,102,241,0.2);
+  color: var(--accent2);
+  border: 1px solid var(--accent);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+/* ── MAIN CONTENT ── */
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.content-section {
+  padding: 48px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.content-section:last-child { border-bottom: none; }
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--accent);
+}
+
+h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 24px 0 8px;
+}
+
+p { margin-bottom: 1em; }
+
+ul, ol {
+  padding-left: 1.4em;
+  margin-bottom: 1em;
+}
+
+li { margin-bottom: 6px; }
+
+/* ── INFO CARDS (audience, scope, etc.) ── */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.info-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+}
+
+.info-card h3 {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+
+.info-card p { font-size: 0.92rem; margin: 0; }
+
+/* ── TABLE OF CONTENTS ── */
+.toc {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  margin-top: 20px;
+}
+
+.toc-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.toc ol {
+  list-style: decimal;
+  padding-left: 1.2em;
+}
+
+.toc li {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.toc li a {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.toc li span {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* ── RESOURCE CARD (resource pages) ── */
+.resource-header {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  margin: 32px 0 28px;
+}
+
+.resource-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.resource-tag {
+  background: #eef2ff;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.resource-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--dark);
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.resource-url {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.resource-url a { color: var(--accent); font-weight: 500; }
+
+/* ── ABSTRACT SECTIONS ── */
+.abstract-section {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin-bottom: 20px;
+}
+
+.abstract-section h3 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+
+.abstract-section p { font-size: 0.95rem; margin-bottom: 0.8em; }
+.abstract-section p:last-child { margin-bottom: 0; }
+
+/* ── TIPS BOX ── */
+.tips-box {
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  border-radius: var(--radius);
+  padding: 22px 28px;
+  margin-bottom: 20px;
+}
+
+.tips-box h3 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+
+.tips-box ul { padding-left: 1.2em; margin: 0; }
+.tips-box li { font-size: 0.92rem; margin-bottom: 8px; }
+.tips-box li:last-child { margin-bottom: 0; }
+
+/* ── RESOURCE INDEX CARDS (on landing page) ── */
+.resource-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.resource-index-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.resource-index-card:hover {
+  box-shadow: 0 4px 16px rgba(99,102,241,0.12);
+  transform: translateY(-2px);
+}
+
+.resource-number {
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  min-width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.resource-index-card h3 {
+  font-size: 1rem;
+  color: var(--dark);
+  margin: 0 0 4px;
+}
+
+.resource-index-card p {
+  font-size: 0.86rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.resource-index-card a.card-link {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: 6px;
+  display: inline-block;
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  background: var(--dark);
+  border-top: 3px solid var(--accent);
+  margin-top: 64px;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.site-footer p {
+  color: #64748b;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.site-footer a { color: var(--accent2); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  .hero { padding: 48px 20px; }
+  .header-inner { flex-direction: column; align-items: flex-start; }
+  .resource-header { padding: 20px; }
+  .abstract-section { padding: 18px 20px; }
+  .toc { padding: 20px; }
+}
