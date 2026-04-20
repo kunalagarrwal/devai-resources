@@ -21,27 +21,28 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.84);
+  background: rgba(255, 255, 255, 0.9) !important;
   -webkit-backdrop-filter: saturate(180%) blur(18px);
   backdrop-filter: saturate(180%) blur(18px);
-  border-bottom: 1px solid var(--devai-border);
+  border-bottom: 1px solid var(--devai-border) !important;
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.06) !important;
 }
 
 .devai-header__inner {
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 10px 22px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  margin: 0 auto !important;
+  padding: 10px 22px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
   gap: 20px;
 }
 
 .devai-brand {
-  color: var(--devai-text);
-  text-decoration: none;
-  font-size: 20px;
-  font-weight: 700;
+  color: var(--devai-text) !important;
+  text-decoration: none !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
   letter-spacing: -0.02em;
   white-space: nowrap;
 }
@@ -52,22 +53,31 @@
 }
 
 .devai-nav__list {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 3px;
-  margin: 0;
-  padding: 0;
+  list-style: none !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 3px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.devai-nav__list li {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .devai-nav__link {
-  display: inline-block;
-  padding: 6px 10px;
-  border-radius: 999px;
-  color: #4f4f54;
-  text-decoration: none;
-  font-size: 12px;
-  font-weight: 500;
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 6px 10px !important;
+  border-radius: 999px !important;
+  color: #4f4f54 !important;
+  text-decoration: none !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: 1.25 !important;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
@@ -78,8 +88,8 @@
 }
 
 .devai-nav__link.is-current {
-  color: var(--devai-text);
-  background: rgba(0, 0, 0, 0.08);
+  color: var(--devai-text) !important;
+  background: rgba(0, 0, 0, 0.08) !important;
 }
 
 .devai-footer {
@@ -298,12 +308,42 @@
 }
 
 .page-main .toc-panel__list {
+  counter-reset: devai-toc;
+  list-style: none !important;
   margin: 0 !important;
-  padding-left: 1.3em !important;
+  padding: 0 !important;
 }
 
 .page-main .toc-panel__list > li {
-  margin-bottom: 16px !important;
+  position: relative;
+  counter-increment: devai-toc;
+  margin: 0 0 12px !important;
+  padding: 18px 18px 16px 52px !important;
+  border-radius: 14px;
+  border: 1px solid var(--devai-border-soft);
+  background: #ffffff !important;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
+}
+
+.page-main .toc-panel__list > li::before {
+  content: counter(devai-toc) ".";
+  position: absolute;
+  left: 18px;
+  top: 16px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  color: #1f2937;
+}
+
+.page-main .toc-panel__list > li:last-child {
+  margin-bottom: 0 !important;
+}
+
+.page-main .toc-panel__list > li > a {
+  font-size: clamp(1.1rem, 1.8vw, 1.35rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
 }
 
 .page-main .toc-panel__summary {
