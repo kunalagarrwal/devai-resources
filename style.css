@@ -28,6 +28,13 @@
   box-shadow: 0 2px 18px rgba(0, 0, 0, 0.06) !important;
 }
 
+.devai-header,
+.devai-header * {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  box-sizing: border-box;
+}
+
 .devai-header__inner {
   max-width: 1200px;
   margin: 0 auto !important;
@@ -62,6 +69,14 @@
   padding: 0 !important;
 }
 
+.devai-header .devai-nav ul,
+.devai-header .devai-nav ol,
+.devai-header .devai-nav li {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .devai-nav__list li {
   list-style: none !important;
   margin: 0 !important;
@@ -81,10 +96,16 @@
   transition: background 0.2s ease, color 0.2s ease;
 }
 
+.devai-header .devai-nav__link:link,
+.devai-header .devai-nav__link:visited {
+  color: #4f4f54 !important;
+  text-decoration: none !important;
+}
+
 .devai-nav__link:hover {
-  color: var(--devai-text);
-  background: rgba(0, 0, 0, 0.05);
-  text-decoration: none;
+  color: var(--devai-text) !important;
+  background: rgba(0, 0, 0, 0.05) !important;
+  text-decoration: none !important;
 }
 
 .devai-nav__link.is-current {
@@ -296,7 +317,7 @@
 
 .page-main .toc-panel {
   margin-top: 30px !important;
-  padding: 36px !important;
+  padding: 32px !important;
   background: linear-gradient(180deg, #ffffff 0%, #fcfcfd 100%) !important;
 }
 
@@ -317,23 +338,30 @@
 .page-main .toc-panel__list > li {
   position: relative;
   counter-increment: devai-toc;
-  margin: 0 0 12px !important;
-  padding: 18px 18px 16px 52px !important;
-  border-radius: 14px;
-  border: 1px solid var(--devai-border-soft);
+  margin: 0 0 14px !important;
+  padding: 20px 20px 18px 56px !important;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.09);
   background: #ffffff !important;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.055);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .page-main .toc-panel__list > li::before {
   content: counter(devai-toc) ".";
   position: absolute;
-  left: 18px;
-  top: 16px;
-  font-size: 18px;
+  left: 20px;
+  top: 18px;
+  font-size: 19px;
   font-weight: 700;
   line-height: 1;
   color: #1f2937;
+}
+
+.page-main .toc-panel__list > li:hover {
+  transform: translateY(-1px);
+  border-color: rgba(0, 113, 227, 0.3);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
 }
 
 .page-main .toc-panel__list > li:last-child {
