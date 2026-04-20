@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>OpenAI Tokenizer & Tiktoken — DevAI Resources</title>
+  <title>OpenAI Tokenizer &amp; Tiktoken — DevAI Resources</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -26,7 +26,9 @@
     </div>
   </header>
 
-<main class="page-main">
+  <main class="page-main">
+
+    <!-- Lede / hero -->
     <section class="band band--white band--tight-top">
       <div class="layout-constrain">
         <div class="resource-lede">
@@ -41,39 +43,126 @@
             Interactive Tool: <a href="https://platform.openai.com/tokenizer" target="_blank">https://platform.openai.com/tokenizer</a><br>
             Python Library: <a href="https://github.com/openai/tiktoken" target="_blank">https://github.com/openai/tiktoken</a>
           </p>
+          <div class="devai-stats">
+            <div class="devai-stat">
+              <p class="devai-stat__value">~4</p>
+              <p class="devai-stat__label">Chars per token (English avg)</p>
+            </div>
+            <div class="devai-stat">
+              <p class="devai-stat__value">¾</p>
+              <p class="devai-stat__label">English words = ~1 token</p>
+            </div>
+            <div class="devai-stat">
+              <p class="devai-stat__value">cl100k</p>
+              <p class="devai-stat__label">Encoding for GPT-4 / GPT-3.5</p>
+            </div>
+            <div class="devai-stat">
+              <p class="devai-stat__value">Free</p>
+              <p class="devai-stat__label">Both tools are free to use</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- Abstract sections -->
     <section class="band band--tint">
       <div class="layout-constrain">
         <div class="article-stack">
+
+          <!-- What is this resource? -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">What is this resource?</h3>
-            <p>This entry covers two closely related resources that address one of the most overlooked aspects of building with LLM APIs: token management. The first is the <strong>OpenAI Tokenizer</strong>, an interactive web tool that lets you paste in any text and see exactly how it gets broken into tokens. The second is <strong>tiktoken</strong>, an open-source Python library from OpenAI that lets you count tokens programmatically in your code before making an API call. Understanding tokens is not optional — it directly affects how much you pay, how the model behaves, and whether your app will hit errors at runtime.</p>
+            <p>This entry covers two closely related tools that address one of the most commonly misunderstood fundamentals of building with LLM APIs: token management. The first is the <strong>OpenAI Tokenizer</strong>, an interactive web tool where you can paste any text and instantly see how the model breaks it into tokens — displayed with color-coded highlighting, a total token count, and the numerical token IDs. The second is <strong>tiktoken</strong>, an open-source Python library from OpenAI that performs the same tokenization programmatically, letting you count tokens in your code before making an API call.</p>
+            <p>Understanding tokens is not optional for anyone building applications on top of LLM APIs. Every API provider charges by the token, enforces context window limits measured in tokens, and structures its responses around token usage. Without understanding what a token is and how your text maps to tokens, you cannot accurately predict costs, prevent context window overflow errors, or implement efficient conversation history management. These two tools — the visual tokenizer for building intuition and tiktoken for programmatic control — are the practical solution to those problems.</p>
           </div>
 
+          <!-- What's in it? -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">What's in it?</h3>
-            <p>The <strong>interactive Tokenizer tool</strong> (platform.openai.com/tokenizer) is a browser-based tool where you paste text and it highlights each token in a different color, shows the total token count, and displays the raw token IDs. You can switch between different tokenization encodings (cl100k_base for GPT-4 and GPT-3.5, etc.) to see how different models count the same text. It's the fastest way to develop intuition for how tokens work without writing any code.</p>
-            <p>The <strong>tiktoken library</strong> (GitHub) is the programmatic version of the same thing. You install it via pip, specify the encoding for your target model, and call it on any string to get an exact token count before you send the request. The GitHub README explains the API clearly and includes examples for the most common use cases — counting tokens in a chat conversation, truncating text to fit within a token budget, and handling special tokens used in the chat format.</p>
+            <p>A <strong>token</strong> is the basic unit that language models read and generate. It is not a word, a character, or a syllable — it is a chunk of text determined by the model's vocabulary, called an encoding. Common English words are often single tokens ("the" = 1 token, "cat" = 1 token), but less common words get split across multiple tokens ("tokenization" = 3 tokens: "token", "ization", might vary). Punctuation, numbers, and code are tokenized differently from prose, often at higher token counts per character. Non-English text is typically tokenized less efficiently — a sentence in Japanese or Arabic may use 2–5× as many tokens as the equivalent English sentence of the same semantic content.</p>
+            <p>The <strong>interactive Tokenizer tool</strong> at platform.openai.com/tokenizer lets you toggle between different encodings (<code>cl100k_base</code> for GPT-4 and GPT-3.5, <code>p50k_base</code> for older GPT-3 models) and see exactly how the same text tokenizes differently across models. It's the fastest way to develop an accurate mental model of what's expensive versus cheap to send to the API.</p>
+            <p>The <strong>tiktoken library</strong> on GitHub is the programmatic equivalent. After <code>pip install tiktoken</code>, you load an encoding by name, call <code>encode()</code> on any string, and get back a list of integer token IDs. The length of that list is the token count. The README explains the API and includes ready-made examples for the most common use cases: counting tokens in a plain string, counting tokens in a full chat conversation (which includes the overhead tokens that the message format itself adds), and truncating text to fit within a given budget.</p>
           </div>
 
+          <!-- How is it relevant? -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">How is it relevant to your purpose?</h3>
-            <p>Token management is one of the first things that surprises developers when they start building with LLM APIs. Most people expect to pay based on the number of messages or words — but APIs charge based on tokens, which don't map cleanly to either. A single word can be multiple tokens, and each API call includes not just the user's input but the entire conversation history and system prompt as context. Without understanding this, it's easy to write code that works fine in testing but becomes extremely expensive at scale, or that breaks entirely when a conversation grows long enough to exceed the model's context window limit. These two resources — the interactive tool for building intuition and tiktoken for programmatic control — are the practical solution to that problem.</p>
+            <p>Token management is the first thing that surprises developers who are new to building with LLM APIs. Most people intuitively expect to be charged per message or per word, but APIs charge by token, and the token count for a single request includes far more than just the user's most recent input. It includes the entire conversation history, the system prompt, and the model's response. In a chatbot with 20 back-and-forth turns, by the 20th turn you might be sending 5,000+ tokens per request even if each individual message is short — because all 19 previous turns are re-sent as context.</p>
+            <p>Without a token counter, this accumulation is invisible until you see an unexpectedly high API bill or — worse — get a <code>context_length_exceeded</code> error at runtime because the conversation grew longer than the model's context window allows. Tiktoken gives you the ability to check token counts before every API call, implement a sliding window that trims the oldest messages when the count gets too high, and log token usage per request so you can profile and optimize your application. For a developer building any kind of conversational AI feature, these aren't optional optimizations — they're architectural necessities.</p>
           </div>
 
+          <!-- Callout -->
+          <div class="devai-callout">
+            <p class="devai-callout__label">Real cost example</p>
+            <p>A GPT-4o system prompt of 500 words is roughly 650 tokens. If your chatbot sends that on every request and you get 10,000 daily users each sending 5 messages, that's 32.5 million tokens <em>just from the system prompt</em> per day — about $162/day at current pricing. Knowing this ahead of time lets you use prompt caching, choose a cheaper model for simple turns, or optimize prompt length. Tiktoken makes these calculations trivial.</p>
+          </div>
+
+          <!-- Tips -->
           <aside class="tips-panel">
             <h3 class="tips-panel__title">Tips for using this resource effectively</h3>
             <ul>
-              <li>Use the <strong>interactive tokenizer first</strong> — paste in your system prompt and a sample conversation and look at the total count. This immediately shows you how fast tokens add up in a real application.</li>
-              <li>Install tiktoken early: <code>pip install tiktoken</code>. Add a token-counting function to your project before you start making real API calls so you can monitor usage from day one.</li>
-              <li>Pay attention to the <strong>encoding name</strong> — use <code>cl100k_base</code> for GPT-4 and GPT-3.5-turbo. Using the wrong encoding gives you inaccurate counts.</li>
-              <li>When building a chatbot, implement a <strong>message trimming strategy</strong> — if the conversation history grows too long, remove the oldest messages to stay within the model's context limit. Tiktoken makes it easy to check the count before each call.</li>
-              <li>Refer to the <strong>OpenAI cookbook on GitHub</strong> for a ready-made function that counts tokens for chat-formatted conversations — it handles the overhead tokens that the chat format itself adds.</li>
+              <li>Use the <strong>interactive tokenizer first</strong> — paste in your full system prompt plus a representative sample user conversation and look at the total. This one exercise gives you more practical intuition about token costs than reading any documentation.</li>
+              <li>Install tiktoken at the start of any project: <code>pip install tiktoken</code>. Add a helper function that counts tokens before every API call and logs the result, even in development. You want this data from day one, not after you've already deployed.</li>
+              <li>Use <code>cl100k_base</code> encoding for GPT-4 and GPT-3.5-turbo. Using the wrong encoding gives you inaccurate counts — the difference matters when you're close to a context window limit.</li>
+              <li>For chat conversations, the token count isn't just the sum of all message strings — the chat format itself adds a small overhead per message. The <strong>OpenAI Cookbook on GitHub</strong> has a ready-made function (<code>num_tokens_from_messages()</code>) that handles this correctly; use it rather than writing your own naive counter.</li>
+              <li>Implement a <strong>message trimming strategy</strong> early. A common approach is to remove the oldest user/assistant turns until the count is under a safe threshold before each API call. Tiktoken makes it easy to check the count after each trim step.</li>
             </ul>
           </aside>
+
+          <!-- Video embed -->
+          <div class="devai-video-panel">
+            <p class="devai-video-panel__label">Recommended Watch</p>
+            <h3 class="devai-video-panel__title">Let's Build the GPT Tokenizer — Andrej Karpathy</h3>
+            <p class="devai-video-panel__desc">A deep dive into how BPE tokenization actually works, built from scratch by Andrej Karpathy (former OpenAI). Goes far beyond how to <em>use</em> tokenization — explains why it works the way it does. Essential viewing for any serious AI developer.</p>
+            <div class="devai-video-wrap">
+              <iframe
+                src="https://www.youtube.com/embed/zduSFxRajkE"
+                title="Let's build the GPT Tokenizer — Andrej Karpathy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+
+          <!-- Code example -->
+          <div class="devai-code-panel">
+            <h3 class="devai-code-panel__title">Counting Tokens with Tiktoken</h3>
+            <p class="devai-code-panel__desc">Install with <code>pip install tiktoken</code>. The second example shows a production-ready function for counting tokens in a full chat conversation, including the per-message overhead.</p>
+            <div class="devai-code-block">
+              <code><span class="dk">import</span> <span class="dp">tiktoken</span>
+
+<span class="dc"># --- Basic token counting ---</span>
+<span class="dp">enc</span> = <span class="dp">tiktoken</span>.<span class="df">get_encoding</span>(<span class="ds">"cl100k_base"</span>)  <span class="dc"># for GPT-4 and GPT-3.5</span>
+
+<span class="dp">text</span> = <span class="ds">"Hello! How many tokens does this sentence use?"</span>
+<span class="dp">tokens</span> = <span class="dp">enc</span>.<span class="df">encode</span>(<span class="dp">text</span>)
+<span class="df">print</span>(<span class="ds">f"Token count: </span><span class="dp">{len(tokens)}</span><span class="ds">"</span>)       <span class="dc"># 10</span>
+<span class="df">print</span>(<span class="ds">f"Token IDs:   </span><span class="dp">{tokens}</span><span class="ds">"</span>)
+
+<span class="dc"># --- Count tokens for a full chat conversation (incl. overhead) ---</span>
+<span class="dk">def</span> <span class="df">count_chat_tokens</span>(<span class="dp">messages</span>, <span class="dp">model</span>=<span class="ds">"gpt-4o"</span>):
+    <span class="ds">"""Returns total token count for a messages[] array."""</span>
+    <span class="dp">enc</span> = <span class="dp">tiktoken</span>.<span class="df">encoding_for_model</span>(<span class="dp">model</span>)
+    <span class="dp">tokens_per_message</span> = <span class="dn">3</span>  <span class="dc"># every message adds ~3 tokens of overhead</span>
+    <span class="dp">total</span> = <span class="dn">3</span>               <span class="dc"># every reply is primed with 3 tokens</span>
+    <span class="dk">for</span> <span class="dp">msg</span> <span class="dk">in</span> <span class="dp">messages</span>:
+        <span class="dp">total</span> += <span class="dp">tokens_per_message</span>
+        <span class="dk">for</span> <span class="dp">value</span> <span class="dk">in</span> <span class="dp">msg</span>.<span class="df">values</span>():
+            <span class="dp">total</span> += <span class="df">len</span>(<span class="dp">enc</span>.<span class="df">encode</span>(<span class="dp">value</span>))
+    <span class="dk">return</span> <span class="dp">total</span>
+
+<span class="dc"># Example usage before making an API call</span>
+<span class="dp">conversation</span> = [
+    {<span class="ds">"role"</span>: <span class="ds">"system"</span>,    <span class="ds">"content"</span>: <span class="ds">"You are a helpful assistant."</span>},
+    {<span class="ds">"role"</span>: <span class="ds">"user"</span>,      <span class="ds">"content"</span>: <span class="ds">"What is machine learning?"</span>},
+    {<span class="ds">"role"</span>: <span class="ds">"assistant"</span>, <span class="ds">"content"</span>: <span class="ds">"Machine learning is a subset of AI..."</span>},
+    {<span class="ds">"role"</span>: <span class="ds">"user"</span>,      <span class="ds">"content"</span>: <span class="ds">"Can you give me a code example?"</span>}
+]
+<span class="df">print</span>(<span class="ds">f"Total tokens before API call: </span><span class="dp">{count_chat_tokens(conversation)}</span><span class="ds">"</span>)</code>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

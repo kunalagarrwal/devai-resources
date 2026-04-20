@@ -497,3 +497,199 @@
     padding: 24px !important;
   }
 }
+
+/* ── Video embed panel ─────────────────────────────────────── */
+.page-main .devai-video-panel {
+  background: #fff !important;
+  border: 1px solid var(--devai-border-soft) !important;
+  border-radius: var(--devai-radius) !important;
+  box-shadow: var(--devai-shadow) !important;
+  padding: 36px 40px !important;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.page-main .devai-video-panel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.09), 0 4px 16px var(--devai-accent-glow) !important;
+}
+
+.page-main .devai-video-panel__label {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--devai-link) !important;
+  margin: 0 0 6px !important;
+}
+
+.page-main .devai-video-panel__title {
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--devai-text) !important;
+  margin: 0 0 4px !important;
+}
+
+.page-main .devai-video-panel__desc {
+  font-size: 14px !important;
+  color: var(--devai-muted) !important;
+  margin: 0 0 18px !important;
+}
+
+.page-main .devai-video-wrap {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #000;
+  margin: 0 !important;
+}
+
+.page-main .devai-video-wrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 12px;
+}
+
+/* ── Code block panel ──────────────────────────────────────── */
+.page-main .devai-code-panel {
+  background: #fff !important;
+  border: 1px solid var(--devai-border-soft) !important;
+  border-radius: var(--devai-radius) !important;
+  box-shadow: var(--devai-shadow) !important;
+  padding: 36px 40px !important;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.page-main .devai-code-panel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.09), 0 4px 16px var(--devai-accent-glow) !important;
+}
+
+.page-main .devai-code-panel__title {
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--devai-text) !important;
+  margin: 0 0 4px !important;
+}
+
+.page-main .devai-code-panel__desc {
+  font-size: 14px !important;
+  color: var(--devai-muted) !important;
+  margin: 0 0 18px !important;
+}
+
+.page-main .devai-code-block {
+  background: #1c1c1e !important;
+  border-radius: 12px !important;
+  padding: 24px 26px !important;
+  overflow-x: auto;
+  margin: 0 !important;
+  border: none !important;
+}
+
+.page-main .devai-code-block code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace !important;
+  font-size: 13px !important;
+  line-height: 1.7 !important;
+  color: #e5e5ea !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  white-space: pre !important;
+  display: block;
+}
+
+/* Syntax highlight tokens */
+.page-main .dk { color: #ff7eb6 !important; }  /* keywords: import, from, def, return */
+.page-main .ds { color: #a8ff78 !important; }  /* strings */
+.page-main .dc { color: #636366 !important; }  /* comments */
+.page-main .df { color: #79c0ff !important; }  /* function/method names */
+.page-main .dn { color: #ffa560 !important; }  /* numbers */
+.page-main .dp { color: #e5e5ea !important; }  /* default text */
+
+/* ── Callout box ───────────────────────────────────────────── */
+.page-main .devai-callout {
+  background: linear-gradient(135deg, rgba(0,113,227,0.055) 0%, rgba(0,113,227,0.02) 100%) !important;
+  border: 1px solid rgba(0,113,227,0.18) !important;
+  border-left: 4px solid var(--devai-link) !important;
+  border-radius: var(--devai-radius) !important;
+  padding: 24px 28px !important;
+}
+
+.page-main .devai-callout__label {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--devai-link) !important;
+  margin: 0 0 8px !important;
+}
+
+.page-main .devai-callout p {
+  margin: 0 !important;
+  font-size: 15px !important;
+  color: var(--devai-text) !important;
+  line-height: 1.6 !important;
+}
+
+/* ── Stat pills row ────────────────────────────────────────── */
+.page-main .devai-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px !important;
+}
+
+.page-main .devai-stat {
+  background: var(--devai-bg-alt) !important;
+  border: 1px solid var(--devai-border) !important;
+  border-radius: 14px !important;
+  padding: 16px 22px !important;
+  min-width: 110px;
+}
+
+.page-main .devai-stat__value {
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: var(--devai-text) !important;
+  line-height: 1.1 !important;
+  margin: 0 0 4px !important;
+  letter-spacing: -0.02em;
+}
+
+.page-main .devai-stat__label {
+  font-size: 12px !important;
+  color: var(--devai-muted) !important;
+  margin: 0 !important;
+  line-height: 1.3 !important;
+}
+
+/* ── Responsive additions ──────────────────────────────────── */
+@media (max-width: 768px) {
+  .page-main .devai-video-panel,
+  .page-main .devai-code-panel {
+    padding: 24px !important;
+  }
+
+  .page-main .devai-code-block {
+    padding: 18px !important;
+  }
+
+  .page-main .devai-code-block code {
+    font-size: 12px !important;
+  }
+
+  .page-main .devai-callout {
+    padding: 20px 22px !important;
+  }
+}

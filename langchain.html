@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>LangChain Documentation — DevAI Resources</title>
+  <title>LangChain Documentation — DevAI Resources</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -26,7 +26,9 @@
     </div>
   </header>
 
-<main class="page-main">
+  <main class="page-main">
+
+    <!-- Lede / hero -->
     <section class="band band--white band--tight-top">
       <div class="layout-constrain">
         <div class="resource-lede">
@@ -38,39 +40,122 @@
           <h1 class="resource-lede__title">LangChain Documentation</h1>
           <p class="resource-lede__back"><a href="index.html">&larr; Back to all resources</a></p>
           <p class="resource-lede__url">URL: <a href="https://python.langchain.com/docs" target="_blank">https://python.langchain.com/docs</a></p>
+          <div class="devai-stats">
+            <div class="devai-stat">
+              <p class="devai-stat__value">LCEL</p>
+              <p class="devai-stat__label">LangChain Expression Language</p>
+            </div>
+            <div class="devai-stat">
+              <p class="devai-stat__value">RAG</p>
+              <p class="devai-stat__label">Built-in support</p>
+            </div>
+            <div class="devai-stat">
+              <p class="devai-stat__value">10+</p>
+              <p class="devai-stat__label">LLM providers supported</p>
+            </div>
+            <div class="devai-stat">
+              <p class="devai-stat__value">Open</p>
+              <p class="devai-stat__label">Source (MIT license)</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- Abstract sections -->
     <section class="band band--tint">
       <div class="layout-constrain">
         <div class="article-stack">
+
+          <!-- What is this resource? -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">What is this resource?</h3>
-            <p>LangChain is an open-source framework designed to make it easier to build applications powered by large language models. Rather than writing raw API calls and managing all the plumbing yourself, LangChain provides modular components for prompts, models, memory, data retrieval, and agents — all of which can be chained together to build more sophisticated AI workflows. The documentation at python.langchain.com is the official reference for LangChain's Python library, which is the most widely used version.</p>
+            <p>LangChain is an open-source framework designed to make building applications with large language models faster, more modular, and more maintainable. Instead of writing raw API calls and manually managing prompts, conversation history, external data retrieval, and tool orchestration, LangChain provides a composable set of components for each of these concerns — components that can be connected together using the <strong>LangChain Expression Language (LCEL)</strong>, a pipe-based syntax inspired by Unix shell commands. The official documentation at python.langchain.com is the primary reference for the Python version of the library, which is the most widely used.</p>
+            <p>LangChain matters because almost every production AI application needs features that go beyond a single API call: persistent conversation memory, the ability to query a database or search the web, structured output parsing, and routing logic that decides which model or tool to use based on the input. Building these features from scratch with raw API calls is tedious and error-prone. LangChain provides tested, reusable implementations of all of them, backed by extensive documentation and a large community of active contributors.</p>
           </div>
 
+          <!-- What's in it? -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">What's in it?</h3>
-            <p>The documentation is organized around LangChain's core concepts. <strong>Models</strong> covers how to connect to different LLM providers (OpenAI, Anthropic, Hugging Face, etc.) through a unified interface. <strong>Prompts</strong> explains how to build reusable prompt templates with variable inputs. <strong>Chains</strong> shows how to link multiple steps together — for example, taking a user question, retrieving relevant documents, and then passing both to the model for a grounded answer. <strong>Memory</strong> covers how to persist conversation history across multiple turns without managing it manually. <strong>Agents</strong> explains how to give the model access to tools — like web search or a calculator — so it can decide which tool to use based on the user's input.</p>
-            <p>The docs also include a substantial section on <strong>Retrieval-Augmented Generation (RAG)</strong>, which is the technique behind most "chat with your documents" applications. This covers vector stores, document loaders, and embedding models — all the components needed to let an LLM answer questions based on your own data rather than just its training knowledge.</p>
+            <p>The documentation is organized around LangChain's core abstractions. <strong>Chat Models</strong> provides a unified interface to over a dozen LLM providers — OpenAI, Anthropic, Hugging Face, Google, Mistral, and more — through the same Python class structure. Switching providers is a one-line change, which means your application logic stays provider-agnostic. <strong>Prompt Templates</strong> allows you to define prompts with variable placeholders that get filled at runtime, making prompts reusable, testable, and easy to version-control.</p>
+            <p><strong>Chains and LCEL</strong> is where LangChain's power shows most clearly. Using the pipe operator (<code>|</code>), you can compose a prompt template, a model, and an output parser into a single executable chain with one line: <code>chain = prompt | llm | parser</code>. This is the core pattern used throughout modern LangChain code. <strong>Memory</strong> covers how to persist and retrieve conversation history across turns, including different storage backends (in-memory, Redis, PostgreSQL). <strong>Agents</strong> explain how to give a model access to tools — web search, code execution, database queries — and let it decide which tool to use autonomously.</p>
+            <p>The <strong>Retrieval-Augmented Generation (RAG)</strong> section is one of the most practically valuable parts of the documentation. RAG is the architectural pattern behind "chat with your documents" applications: you embed a document into vector representations, store them in a vector database (like Chroma, Pinecone, or FAISS), and at query time retrieve the most relevant chunks to include in the prompt. LangChain has built-in support for dozens of document loaders (PDF, HTML, CSV, code files), text splitters, embedding models, and vector stores.</p>
           </div>
 
+          <!-- How is it relevant? -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">How is it relevant to your purpose?</h3>
-            <p>Once you've gotten comfortable making basic API calls to an LLM, LangChain becomes the natural next step for building anything more complex. If you're building a chatbot that needs to remember conversation history, an app that answers questions based on uploaded documents, or a feature that lets the model call external tools, doing all of that from scratch with raw API calls is tedious and error-prone. LangChain handles the boilerplate so you can focus on the logic specific to your application. It also supports multiple LLM providers through the same interface, so switching from OpenAI to Anthropic or a Hugging Face model doesn't require rewriting your entire codebase.</p>
+            <p>Once you're comfortable making basic API calls to an LLM, LangChain becomes the natural next step for building anything more complex. Consider a common scenario: you're building a chatbot that needs to answer questions based on a PDF document the user uploads, remember context across a multi-turn conversation, and occasionally look up current information from the web. Implementing all of that from scratch with raw API calls requires hundreds of lines of custom code and careful handling of edge cases. With LangChain, each of those features is a few lines using built-in components.</p>
+            <p>LangChain also has significant professional relevance. It's one of the most popular AI frameworks in the industry, appearing frequently in job descriptions for AI engineering and product development roles. Knowing the framework — not just the raw APIs it wraps — demonstrates a level of applied AI engineering sophistication that matters when presenting projects to employers or in interviews. Even if you ultimately build production applications on raw API calls for performance reasons, understanding how LangChain works gives you a clear mental model for the architecture of AI applications.</p>
           </div>
 
+          <!-- Callout -->
+          <div class="devai-callout">
+            <p class="devai-callout__label">The LCEL pattern</p>
+            <p>The core LCEL pattern — <code>chain = prompt | model | output_parser</code> — composes AI application logic the same way Unix pipes compose commands. Each component takes an input and produces an output, and the <code>|</code> operator connects them. This composability is what makes LangChain-based code easy to read, test, and swap components in and out of. Once you internalize this pattern, you can reason about complex AI pipelines at a glance.</p>
+          </div>
+
+          <!-- Tips -->
           <aside class="tips-panel">
             <h3 class="tips-panel__title">Tips for using this resource effectively</h3>
             <ul>
-              <li>Start with the <strong>Introduction and Quickstart</strong> pages — they give you a clear mental model of how LangChain's components fit together before you try to use any of them.</li>
-              <li>The docs can feel overwhelming at first because the framework covers a lot. Focus on one concept at a time — get <strong>chains</strong> working before you try agents or RAG.</li>
-              <li>The <strong>How-to guides</strong> section is more practical than the conceptual docs — if you have a specific thing you're trying to do (like adding memory to a chatbot), go there first.</li>
-              <li>LangChain updates frequently, so always check the <strong>version number</strong> in the docs against what you have installed — breaking changes between versions are common.</li>
-              <li>If you're building a RAG application, the <strong>Q&amp;A over documents</strong> tutorial is the best starting point — it walks through the entire pipeline end to end with working code.</li>
+              <li>Start with the <strong>Introduction and Quickstart</strong> pages to build a mental model of how LangChain's components fit together. Trying to use agents or RAG before understanding the basic LCEL chain pattern is a common mistake that leads to confusion.</li>
+              <li>LangChain's documentation is large and can feel overwhelming. Focus on one concept at a time — get a basic LCEL chain working, then add memory, then try RAG. Don't try to learn everything at once.</li>
+              <li>The <strong>How-to guides</strong> section (separate from the conceptual docs) is where you should go when you have a specific task in mind. It's organized by problem ("How to add memory to a chatbot") rather than by component, which is more useful when you're actually building something.</li>
+              <li>LangChain updates frequently and has had significant breaking changes between major versions. Always check the version number in the docs against what you have installed, and use version-pinned requirements files in your project to prevent surprises.</li>
+              <li>If you're building a RAG application, the <strong>"Q&amp;A over documents"</strong> tutorial in the How-to section is the best starting point — it walks through the full pipeline end to end with working code, covering document loading, splitting, embedding, storing, and retrieval.</li>
             </ul>
           </aside>
+
+          <!-- Video embed -->
+          <div class="devai-video-panel">
+            <p class="devai-video-panel__label">Recommended Watch</p>
+            <h3 class="devai-video-panel__title">LangChain Crash Course for Beginners</h3>
+            <p class="devai-video-panel__desc">A practical introduction to LangChain's core concepts — covers chains, prompt templates, memory, and RAG with working code examples. Ideal for developers who already know basic Python and the OpenAI API.</p>
+            <div class="devai-video-wrap">
+              <iframe
+                src="https://www.youtube.com/embed/LbT1yp742MU"
+                title="LangChain Crash Course for Beginners"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+
+          <!-- Code example -->
+          <div class="devai-code-panel">
+            <h3 class="devai-code-panel__title">Building a Chain with LCEL</h3>
+            <p class="devai-code-panel__desc">Install with <code>pip install langchain langchain-openai</code>. The pipe operator (<code>|</code>) is the core LCEL syntax — it passes output from one component to the next.</p>
+            <div class="devai-code-block">
+              <code><span class="dk">from</span> <span class="dp">langchain_openai</span> <span class="dk">import</span> <span class="dp">ChatOpenAI</span>
+<span class="dk">from</span> <span class="dp">langchain_core.prompts</span> <span class="dk">import</span> <span class="dp">ChatPromptTemplate</span>
+<span class="dk">from</span> <span class="dp">langchain_core.output_parsers</span> <span class="dk">import</span> <span class="dp">StrOutputParser</span>
+
+<span class="dc"># 1. Define a reusable prompt template with variables</span>
+<span class="dp">prompt</span> = <span class="dp">ChatPromptTemplate</span>.<span class="df">from_messages</span>([
+    (<span class="ds">"system"</span>, <span class="ds">"You are a concise technical explainer."</span>),
+    (<span class="ds">"human"</span>,  <span class="ds">"Explain {concept} to a {level} developer in 2 sentences."</span>)
+])
+
+<span class="dc"># 2. Initialize the model</span>
+<span class="dp">llm</span> = <span class="df">ChatOpenAI</span>(model=<span class="ds">"gpt-4o-mini"</span>, temperature=<span class="dn">0</span>)
+
+<span class="dc"># 3. Compose the chain with LCEL pipe syntax</span>
+<span class="dp">chain</span> = <span class="dp">prompt</span> | <span class="dp">llm</span> | <span class="df">StrOutputParser</span>()
+
+<span class="dc"># 4. Invoke with template variables</span>
+<span class="dp">response</span> = <span class="dp">chain</span>.<span class="df">invoke</span>({
+    <span class="ds">"concept"</span>: <span class="ds">"vector embeddings"</span>,
+    <span class="ds">"level"</span>:   <span class="ds">"beginner"</span>
+})
+<span class="df">print</span>(<span class="dp">response</span>)
+
+<span class="dc"># Chains are reusable — call with different inputs without rewriting anything</span>
+<span class="dp">response2</span> = <span class="dp">chain</span>.<span class="df">invoke</span>({<span class="ds">"concept"</span>: <span class="ds">"RAG pipelines"</span>, <span class="ds">"level"</span>: <span class="ds">"intermediate"</span>})
+<span class="df">print</span>(<span class="dp">response2</span>)</code>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Prompt Engineering Guide — DevAI Resources</title>
+  <title>Prompt Engineering Guide — DevAI Resources</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -26,50 +26,147 @@
     </div>
   </header>
 
-<main class="page-main">
+  <main class="page-main">
+
+    <!-- Lede / hero -->
     <section class="band band--white band--tight-top">
       <div class="layout-constrain">
         <div class="resource-lede">
           <div class="resource-lede__tags">
             <span class="resource-lede__tag">Reference Guide</span>
             <span class="resource-lede__tag">Community Maintained</span>
+            <span class="resource-lede__tag">Techniques</span>
           </div>
           <h1 class="resource-lede__title">Prompt Engineering Guide</h1>
           <p class="resource-lede__back"><a href="index.html">&larr; Back to all resources</a></p>
           <p class="resource-lede__url">URL: <a href="https://www.promptingguide.ai" target="_blank">https://www.promptingguide.ai</a></p>
+          <div class="devai-stats">
+            <div class="devai-stat">
+              <p class="devai-stat__value">10+</p>
+              <p class="devai-stat__label">Prompting techniques covered</p>
+            </div>
+            <div class="devai-stat">
+              <p class="devai-stat__value">Free</p>
+              <p class="devai-stat__label">Completely free resource</p>
+            </div>
+            <div class="devai-stat">
+              <p class="devai-stat__value">CoT</p>
+              <p class="devai-stat__label">Chain-of-thought prompting</p>
+            </div>
+            <div class="devai-stat">
+              <p class="devai-stat__value">Open</p>
+              <p class="devai-stat__label">Community maintained</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- Abstract sections -->
     <section class="band band--tint">
       <div class="layout-constrain">
         <div class="article-stack">
+
+          <!-- What is this resource? -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">What is this resource?</h3>
-            <p>The Prompt Engineering Guide (promptingguide.ai) is a comprehensive, community-maintained reference for writing effective prompts for large language models. It covers everything from basic prompting principles to advanced techniques used in research and production applications. Unlike the official API documentation from OpenAI or Anthropic — which focuses on the technical mechanics of calling the API — this guide focuses specifically on how to communicate with the model effectively once you have it working. It's one of the most thorough and well-organized resources on prompt engineering available for free.</p>
+            <p>The Prompt Engineering Guide (promptingguide.ai) is a comprehensive, community-maintained reference covering techniques for writing effective prompts for large language models. It covers a wide spectrum — from the most basic principles of how to phrase instructions clearly, to advanced research-level techniques used in production AI systems and academic papers. What distinguishes this resource from the official documentation provided by OpenAI or Anthropic is its focus: while the official API docs explain <em>how to call</em> the model, this guide explains <em>how to communicate</em> with it effectively once it's working. It's one of the most thoroughly organized free resources on prompt engineering available.</p>
+            <p>Prompt engineering is the practice of designing inputs to a language model to reliably produce the outputs your application needs. It is not about magic phrases or hacks — it is a systematic discipline with documented techniques, each with specific use cases, tradeoffs, and limitations. As AI becomes integrated into more software products, the ability to write system prompts that produce consistent, well-structured, reliable outputs is becoming a core engineering skill alongside database design or API integration.</p>
           </div>
 
+          <!-- What's in it? -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">What's in it?</h3>
-            <p>The guide is organized into a progression from introductory to advanced content. The introductory sections cover what prompting is, how LLMs process input, and the basic elements of a well-structured prompt (instruction, context, input data, output format). From there, it covers specific prompting techniques including <strong>zero-shot prompting</strong> (giving the model a task with no examples), <strong>few-shot prompting</strong> (giving examples of the desired input-output format), and <strong>chain-of-thought prompting</strong> (asking the model to show its reasoning step by step before giving a final answer). The advanced sections cover techniques like self-consistency, tree-of-thought reasoning, and ReAct (reasoning and acting), which are used in more complex agent-based systems.</p>
-            <p>The site also has sections dedicated to specific applications — prompting for code generation, data analysis, and reasoning tasks — and a growing collection of model-specific guides that cover the quirks and best practices for individual models like GPT-4 and Claude.</p>
+            <p>The guide is organized as a progressive curriculum from fundamentals to advanced techniques. The introductory sections establish the basic anatomy of a prompt: <strong>instruction</strong> (what you want the model to do), <strong>context</strong> (background information that helps the model), <strong>input data</strong> (the actual content to process), and <strong>output format</strong> (how you want the response structured). Many poorly-written prompts fail simply because they're missing one or more of these elements.</p>
+            <p>The technique sections cover the three most practically important methods for application developers. <strong>Zero-shot prompting</strong> is giving the model a task with no examples, relying entirely on its training to understand the request — useful for general-purpose instructions. <strong>Few-shot prompting</strong> is providing 2–5 examples of the desired input-output format before the actual task — this is the single most effective technique for getting structured, consistent outputs like JSON, formatted reports, or specific classifications. <strong>Chain-of-thought (CoT) prompting</strong> asks the model to show its reasoning step by step before giving a final answer, which dramatically improves accuracy on tasks involving math, logic, or multi-step reasoning.</p>
+            <p>The advanced sections cover techniques like <strong>self-consistency</strong> (generating multiple reasoning paths and taking the most common answer), <strong>tree-of-thoughts</strong> (branching reasoning trees for complex problems), and <strong>ReAct</strong> (combining reasoning with tool-use in agentic workflows). The guide also has model-specific pages with tips tailored to GPT-4, Claude, and other models, and application sections covering prompting for code generation, data analysis, and classification tasks.</p>
           </div>
 
+          <!-- How is it relevant? -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">How is it relevant to your purpose?</h3>
-            <p>Getting the API working is only half the challenge when integrating AI into an application. The other half is getting the model to consistently produce the output your app actually needs — the right format, the right level of detail, the right tone. Poorly written prompts lead to unpredictable responses, which creates bugs that are hard to debug because the model's behavior isn't deterministic. Understanding prompt engineering gives you practical control over that behavior. For example, if you're building a chatbot that needs to always respond in JSON, or a feature that should only answer questions within a specific domain, prompt engineering techniques are what make that possible reliably. This guide gives you the vocabulary and techniques to write system prompts that actually work.</p>
+            <p>Getting the API technically working is only half the challenge when building an AI-powered application. The other half is getting the model to produce outputs that are consistently useful, correctly formatted, and appropriately scoped. Poorly written prompts lead to outputs that are unpredictable, verbose, off-topic, or in the wrong format — and these failures manifest as application bugs that are hard to diagnose precisely because the model's behavior is not deterministic.</p>
+            <p>Consider a concrete example: you're building a feature that extracts action items from a meeting transcript and returns them as a JSON array. Without proper prompt engineering, the model might return plain text bullet points, include unnecessary explanation, or add items that weren't mentioned. Adding a few-shot example to your system prompt — showing the model exactly what input maps to what JSON output — often eliminates all three problems immediately. The Prompt Engineering Guide gives you the vocabulary and the specific techniques to handle these situations systematically rather than by trial and error. For any developer building AI features that need to produce structured, reliable output, this guide is essential reading.</p>
           </div>
 
+          <!-- Callout -->
+          <div class="devai-callout">
+            <p class="devai-callout__label">The impact of chain-of-thought</p>
+            <p>Research has shown that adding "Let's think step by step" to a prompt — or structuring the prompt to elicit explicit reasoning before a final answer — can improve accuracy on complex reasoning tasks by 30–50% compared to zero-shot prompting. This isn't just an interesting research finding: it's a practical technique that matters any time your application needs the model to do math, compare options, or reach a conclusion through multiple logical steps.</p>
+          </div>
+
+          <!-- Tips -->
           <aside class="tips-panel">
             <h3 class="tips-panel__title">Tips for using this resource effectively</h3>
             <ul>
-              <li>Read the <strong>Introduction</strong> and <strong>Basics</strong> sections first even if you've used LLMs before — the guide formalizes concepts you might have picked up informally and fills in gaps.</li>
-              <li><strong>Few-shot prompting</strong> is the single most useful technique for developers building structured outputs — if you need the model to return JSON or follow a specific format, include 2-3 examples in your prompt and the results improve dramatically.</li>
-              <li>Use <strong>chain-of-thought</strong> prompting when your application involves any kind of reasoning or multi-step problem solving — adding "let's think step by step" or structuring the prompt to show reasoning before the answer significantly improves accuracy.</li>
-              <li>The guide includes <strong>runnable examples</strong> that you can test in the OpenAI Playground — try them there before adapting them to your own use case.</li>
-              <li>Revisit this guide whenever a feature in your app isn't behaving as expected — the issue is often the prompt structure rather than the model itself, and this resource will help you diagnose it.</li>
+              <li>Read the <strong>Introduction and Basics sections</strong> even if you've used LLMs before — the guide formalizes concepts you may have discovered informally and introduces precise terminology (zero-shot, few-shot, CoT) that's useful both for reasoning about your work and for communicating with colleagues about it.</li>
+              <li><strong>Few-shot prompting</strong> is the most immediately applicable technique. If you need the model to return data in a specific format — JSON, markdown tables, numbered lists, anything structured — include 2–3 complete input/output examples in your system prompt. The improvement in consistency is almost always dramatic.</li>
+              <li>Use <strong>chain-of-thought prompting</strong> for any feature involving reasoning, comparison, or multi-step analysis. Adding a phrase like "Think through this step by step before giving your final answer" to your system prompt is the simplest implementation, and it's often sufficient for most use cases.</li>
+              <li>The guide includes <strong>runnable prompt examples</strong> you can test in the OpenAI Playground or any model interface. Don't just read them — copy them, run them, and modify them. Hands-on experimentation with the examples is far more instructive than reading alone.</li>
+              <li>Return to this guide whenever a feature in your application isn't behaving as expected. The underlying issue is almost always the prompt structure, not the model's capability. This resource will help you diagnose whether you're missing context, need examples, or need a different output format specification.</li>
             </ul>
           </aside>
+
+          <!-- Video embed -->
+          <div class="devai-video-panel">
+            <p class="devai-video-panel__label">Recommended Watch</p>
+            <h3 class="devai-video-panel__title">Prompt Engineering Tutorial – Master ChatGPT &amp; LLM Responses</h3>
+            <p class="devai-video-panel__desc">A comprehensive video guide to prompt engineering techniques — covers zero-shot, few-shot, chain-of-thought, ReAct, and more with practical examples. Pairs directly with the content in the Prompt Engineering Guide website.</p>
+            <div class="devai-video-wrap">
+              <iframe
+                src="https://www.youtube.com/embed/_ZvnD73m40o"
+                title="Prompt Engineering Tutorial"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+
+          <!-- Code example: showing a few-shot prompt structure -->
+          <div class="devai-code-panel">
+            <h3 class="devai-code-panel__title">Few-Shot Prompting: Before &amp; After</h3>
+            <p class="devai-code-panel__desc">Few-shot prompting is the most impactful technique for structured outputs. This Python example shows how adding just two examples to a system prompt transforms a flaky response into a reliable, parseable one.</p>
+            <div class="devai-code-block">
+              <code><span class="dk">from</span> <span class="dp">openai</span> <span class="dk">import</span> <span class="dp">OpenAI</span>
+<span class="dp">client</span> = <span class="df">OpenAI</span>()
+
+<span class="dc"># ❌ BEFORE: vague instruction produces inconsistent output</span>
+<span class="dp">bad_system</span> = <span class="ds">"Extract the sentiment from product reviews."</span>
+
+<span class="dc"># ✅ AFTER: few-shot examples lock in the exact output format</span>
+<span class="dp">good_system</span> = <span class="ds">"""Extract the sentiment from product reviews.
+Return ONLY a JSON object with this exact structure.
+
+Example 1:
+Review: "Works great, exactly as described!"
+Output: {"sentiment": "positive", "confidence": "high"}
+
+Example 2:
+Review: "Stopped working after two days, very disappointed."
+Output: {"sentiment": "negative", "confidence": "high"}
+
+Example 3:
+Review: "It's okay I guess, nothing special."
+Output: {"sentiment": "neutral", "confidence": "medium"}
+
+Now classify the review the user sends."""</span>
+
+<span class="dk">def</span> <span class="df">classify_review</span>(<span class="dp">review_text</span>):
+    <span class="dp">response</span> = <span class="dp">client</span>.<span class="df">chat.completions.create</span>(
+        model=<span class="ds">"gpt-4o-mini"</span>,
+        messages=[
+            {<span class="ds">"role"</span>: <span class="ds">"system"</span>, <span class="ds">"content"</span>: <span class="dp">good_system</span>},
+            {<span class="ds">"role"</span>: <span class="ds">"user"</span>,   <span class="ds">"content"</span>: <span class="dp">review_text</span>}
+        ],
+        temperature=<span class="dn">0</span>  <span class="dc"># temperature=0 maximizes consistency for structured tasks</span>
+    )
+    <span class="dk">return</span> <span class="dp">response</span>.<span class="dp">choices</span>[<span class="dn">0</span>].<span class="dp">message</span>.<span class="dp">content</span>
+
+<span class="df">print</span>(<span class="df">classify_review</span>(<span class="ds">"Battery lasts forever, super happy with this purchase!"</span>))
+<span class="dc"># Output: {"sentiment": "positive", "confidence": "high"}</span></code>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

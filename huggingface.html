@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Hugging Face — DevAI Resources</title>
+  <title>Hugging Face — DevAI Resources</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -26,7 +26,9 @@
     </div>
   </header>
 
-<main class="page-main">
+  <main class="page-main">
+
+    <!-- Lede / hero -->
     <section class="band band--white band--tight-top">
       <div class="layout-constrain">
         <div class="resource-lede">
@@ -38,39 +40,120 @@
           <h1 class="resource-lede__title">Hugging Face</h1>
           <p class="resource-lede__back"><a href="index.html">&larr; Back to all resources</a></p>
           <p class="resource-lede__url">URL: <a href="https://huggingface.co" target="_blank">https://huggingface.co</a></p>
+          <div class="devai-stats">
+            <div class="devai-stat">
+              <p class="devai-stat__value">500k+</p>
+              <p class="devai-stat__label">Models available</p>
+            </div>
+            <div class="devai-stat">
+              <p class="devai-stat__value">100k+</p>
+              <p class="devai-stat__label">Public datasets</p>
+            </div>
+            <div class="devai-stat">
+              <p class="devai-stat__value">Free</p>
+              <p class="devai-stat__label">Model downloads</p>
+            </div>
+            <div class="devai-stat">
+              <p class="devai-stat__value">Python</p>
+              <p class="devai-stat__label">Primary interface</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- Abstract sections -->
     <section class="band band--tint">
       <div class="layout-constrain">
         <div class="article-stack">
+
+          <!-- What is this resource? -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">What is this resource?</h3>
-            <p>Hugging Face is the largest open-source AI platform on the web, serving as a hub for pre-trained models, datasets, and tools for working with machine learning. It hosts hundreds of thousands of models that anyone can download and use for free — including text generation models, image classifiers, speech recognition systems, and more. For developers who want to integrate AI without relying on a paid API, Hugging Face is the starting point.</p>
+            <p>Hugging Face is the largest open-source AI platform on the web, functioning simultaneously as a model repository, a dataset library, a community forum, and a hosting platform for live AI demos. It hosts over 500,000 pre-trained models contributed by research institutions, major technology companies (Meta, Google, Microsoft, Mistral), and independent developers — all available for free download. For developers who want to integrate AI capabilities without relying entirely on a paid third-party API, Hugging Face is the essential starting point.</p>
+            <p>What distinguishes Hugging Face from other AI resources in this guide is its scope: it covers the full breadth of AI tasks beyond just text generation. Models on the platform handle text, images, audio, video, code, protein sequences, and more. For a developer building a production application, Hugging Face is where you go to find the right specialized model for your specific task — whether that's multilingual text classification, speech recognition, document image analysis, or a domain-specific text generator trained on medical or legal data.</p>
           </div>
 
+          <!-- What's in it? -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">What's in it?</h3>
-            <p>The platform has three main components. The <strong>Model Hub</strong> is a searchable library of pre-trained models contributed by research institutions, companies like Meta and Google, and independent developers. You can filter by task (text generation, summarization, translation, etc.), license, and language. The <strong>Datasets</strong> section provides access to thousands of publicly available training datasets. The <strong>Spaces</strong> section hosts live demos of models that you can try directly in the browser before downloading anything.</p>
-            <p>Hugging Face also maintains the <strong>Transformers library</strong> — an open-source Python library that provides a unified interface for downloading, running, and fine-tuning models locally. The documentation for Transformers is also hosted on the site and is the main reference for running models on your own machine. Additionally, the platform offers a free <strong>Inference API</strong> that lets you call many models via HTTP request without downloading them, which works similarly to OpenAI's API but for open-source models.</p>
+            <p>The platform has four main components that developers interact with. The <strong>Model Hub</strong> is a searchable library of pre-trained models filterable by task, programming language, license type, and dataset. Each model has a dedicated <em>model card</em> — a structured documentation page explaining what the model was trained on, its intended use cases, known limitations, and example code showing how to load and run it. Reading the model card before downloading anything is critical: it tells you whether the model actually does what you need, under what license, and with what computational requirements.</p>
+            <p>The <strong>Datasets Hub</strong> provides access to tens of thousands of publicly available training and evaluation datasets in a standardized format. The <strong>Spaces</strong> section hosts live interactive demos of models that you can try in the browser, built by the community using Gradio or Streamlit — this is the fastest way to test a model's behavior before integrating it. The <strong>Transformers library</strong> (installable via <code>pip install transformers</code>) is Hugging Face's flagship open-source Python library, providing a unified <code>pipeline()</code> interface that loads and runs any task-specific model with a single function call. For developers who want to call models without downloading them, the free-tier <strong>Inference API</strong> allows HTTP requests to most models on the hub.</p>
           </div>
 
+          <!-- How is it relevant? -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">How is it relevant to your purpose?</h3>
-            <p>For developers integrating AI into an application, Hugging Face matters for a few reasons. First, it gives you access to powerful models at no cost — instead of paying per API call, you can download a model and run it locally, which is especially valuable for prototyping or for apps with high request volumes. Second, it opens up a wider range of specialized models that the major API providers don't offer, like domain-specific text classifiers or multilingual models. Third, understanding how to use the Transformers library and the Inference API is a genuinely marketable skill in the industry and a natural extension of the OpenAI API knowledge you'll build from the other resources in this guide.</p>
+            <p>There are three reasons Hugging Face matters specifically for developers integrating AI into applications. First, <strong>cost</strong>: downloading a model and running it locally means no per-call API fees. For a prototype or a low-traffic application, running a smaller open-source model locally can reduce operating costs to near zero. For high-volume production use, self-hosting on a cloud GPU instance is still typically cheaper than commercial API pricing at scale. Second, <strong>specialization</strong>: the commercial API providers offer generalist models. Hugging Face gives you access to thousands of task-specific models — for example, a sentiment analysis model fine-tuned on product reviews, or a named entity recognition model trained on clinical text — that often outperform general-purpose models on their target domain.</p>
+            <p>Third, <strong>professional relevance</strong>: the Transformers library is one of the most widely used tools in applied machine learning. Knowing how to use it, navigate model cards, load models, and call the Inference API are genuine industry skills that appear in job descriptions for ML engineering and AI product development roles. Building familiarity with the Hugging Face ecosystem early gives you practical experience with the open-source AI tooling that underpins a large portion of the industry.</p>
           </div>
 
+          <!-- Callout -->
+          <div class="devai-callout">
+            <p class="devai-callout__label">The pipeline() shortcut</p>
+            <p>The Transformers library's <code>pipeline()</code> function is one of the most powerful single lines of code in modern AI development. You pass it a task name and an optional model ID, and it handles downloading the model weights, loading the tokenizer, running inference, and returning structured output — all automatically. For common tasks like text classification, summarization, or translation, you can have a working model integrated into your Python code in under five minutes.</p>
+          </div>
+
+          <!-- Tips -->
           <aside class="tips-panel">
             <h3 class="tips-panel__title">Tips for using this resource effectively</h3>
             <ul>
-              <li>Use the <strong>task filter</strong> on the Model Hub to narrow down models by what you want to do (e.g., "text-generation", "question-answering") rather than browsing by name.</li>
-              <li>Check the <strong>model card</strong> before downloading anything — it explains what the model was trained on, its intended use, known limitations, and how to load it with the Transformers library.</li>
-              <li>Try the <strong>Spaces demos</strong> first — they let you test a model in the browser with no setup, which is the fastest way to see if it does what you need before committing to integrating it.</li>
-              <li>The <strong>Inference API</strong> (free tier available) is a good middle ground if you want to call open-source models via HTTP without downloading them — the API format is similar to what you already know from OpenAI.</li>
-              <li>Filter models by <strong>license</strong> if you're building something you plan to distribute or commercialize — not all models allow commercial use.</li>
+              <li>Use the <strong>task filter</strong> on the Model Hub as your primary navigation tool — searching by task type (e.g., "text-generation", "question-answering", "zero-shot-classification") will give you far better results than browsing by model name, most of which are technical identifiers that mean nothing until you've read the model card.</li>
+              <li>Always read the <strong>model card</strong> before downloading. It tells you the model's purpose, performance benchmarks, license restrictions, and exact code to load it. Skipping the model card and going straight to <code>pip install</code> is how you end up with a model that does something completely different from what you needed.</li>
+              <li>Use <strong>Spaces demos</strong> to test model behavior in the browser before writing any code. If a model doesn't perform well on your actual inputs when you test it in the browser, it won't perform better in your application.</li>
+              <li>Pay attention to the <strong>license field</strong> when selecting models for anything you plan to deploy or distribute. Many models use permissive licenses (MIT, Apache 2.0) but some have non-commercial or research-only restrictions. The license filter in the Model Hub search makes this easy to check.</li>
+              <li>The <strong>Inference API</strong> (free tier available) is a good middle ground for development and testing — it lets you call models via HTTP without downloading weights, and the request format is nearly identical to what you'd use with any REST API.</li>
             </ul>
           </aside>
+
+          <!-- Video embed -->
+          <div class="devai-video-panel">
+            <p class="devai-video-panel__label">Recommended Watch</p>
+            <h3 class="devai-video-panel__title">Hugging Face + Transformers: Getting Started</h3>
+            <p class="devai-video-panel__desc">An introduction to the Hugging Face ecosystem — covers the Model Hub, the Transformers library, the <code>pipeline()</code> function, and how to run open-source models locally in Python.</p>
+            <div class="devai-video-wrap">
+              <iframe
+                src="https://www.youtube.com/embed/QEaBAZQCtwA"
+                title="Hugging Face Transformers Getting Started"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+
+          <!-- Code example -->
+          <div class="devai-code-panel">
+            <h3 class="devai-code-panel__title">Running Models Locally with Transformers</h3>
+            <p class="devai-code-panel__desc">The <code>pipeline()</code> function is the simplest entry point. Install with <code>pip install transformers torch</code>. On first run it downloads model weights automatically.</p>
+            <div class="devai-code-block">
+              <code><span class="dk">from</span> <span class="dp">transformers</span> <span class="dk">import</span> <span class="dp">pipeline</span>
+
+<span class="dc"># --- Example 1: Text generation with GPT-2 (runs locally, free) ---</span>
+<span class="dp">generator</span> = <span class="df">pipeline</span>(<span class="ds">"text-generation"</span>, model=<span class="ds">"gpt2"</span>)
+<span class="dp">result</span> = <span class="dp">generator</span>(<span class="ds">"The best way to learn machine learning is"</span>,
+                  max_new_tokens=<span class="dn">60</span>, num_return_sequences=<span class="dn">1</span>)
+<span class="df">print</span>(<span class="dp">result</span>[<span class="dn">0</span>][<span class="ds">"generated_text"</span>])
+
+<span class="dc"># --- Example 2: Sentiment analysis (no model specified = auto-select) ---</span>
+<span class="dp">classifier</span> = <span class="df">pipeline</span>(<span class="ds">"sentiment-analysis"</span>)
+<span class="dp">reviews</span> = [
+    <span class="ds">"This API is incredibly well-documented and easy to use."</span>,
+    <span class="ds">"The rate limits are frustrating and documentation is outdated."</span>
+]
+<span class="dk">for</span> <span class="dp">result</span> <span class="dk">in</span> <span class="dp">classifier</span>(<span class="dp">reviews</span>):
+    <span class="df">print</span>(<span class="ds">f"</span><span class="dp">{result['label']}</span><span class="ds"> (score: </span><span class="dp">{result['score']:.2f}</span><span class="ds">)"</span>)
+
+<span class="dc"># --- Example 3: Calling a model via Inference API (no download needed) ---</span>
+<span class="dk">import</span> <span class="dp">requests</span>
+
+<span class="dp">API_URL</span> = <span class="ds">"https://api-inference.huggingface.co/models/facebook/bart-large-cnn"</span>
+<span class="dp">headers</span> = {<span class="ds">"Authorization"</span>: <span class="ds">"Bearer hf_..."</span>}
+<span class="dp">payload</span> = {<span class="ds">"inputs"</span>: <span class="ds">"Long article text goes here..."</span>}
+<span class="dp">response</span> = <span class="dp">requests</span>.<span class="df">post</span>(<span class="dp">API_URL</span>, headers=<span class="dp">headers</span>, json=<span class="dp">payload</span>)
+<span class="df">print</span>(<span class="dp">response</span>.<span class="df">json</span>()[<span class="dn">0</span>][<span class="ds">"summary_text"</span>])</code>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

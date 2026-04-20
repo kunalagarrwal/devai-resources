@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>OpenAI Platform Documentation — DevAI Resources</title>
+  <title>OpenAI Platform Documentation — DevAI Resources</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -26,50 +26,134 @@
     </div>
   </header>
 
-<main class="page-main">
+  <main class="page-main">
+
+    <!-- Lede / hero -->
     <section class="band band--white band--tight-top">
       <div class="layout-constrain">
         <div class="resource-lede">
           <div class="resource-lede__tags">
             <span class="resource-lede__tag">API Documentation</span>
             <span class="resource-lede__tag">Official Source</span>
+            <span class="resource-lede__tag">REST API</span>
           </div>
           <h1 class="resource-lede__title">OpenAI Platform Documentation</h1>
           <p class="resource-lede__back"><a href="index.html">&larr; Back to all resources</a></p>
           <p class="resource-lede__url">URL: <a href="https://platform.openai.com/docs" target="_blank">https://platform.openai.com/docs</a></p>
+          <div class="devai-stats">
+            <div class="devai-stat">
+              <p class="devai-stat__value">GPT-4o</p>
+              <p class="devai-stat__label">Flagship model</p>
+            </div>
+            <div class="devai-stat">
+              <p class="devai-stat__value">128k</p>
+              <p class="devai-stat__label">Context window (tokens)</p>
+            </div>
+            <div class="devai-stat">
+              <p class="devai-stat__value">$5</p>
+              <p class="devai-stat__label">Per 1M input tokens (GPT-4o)</p>
+            </div>
+            <div class="devai-stat">
+              <p class="devai-stat__value">REST</p>
+              <p class="devai-stat__label">API format</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- Abstract sections -->
     <section class="band band--tint">
       <div class="layout-constrain">
         <div class="article-stack">
+
+          <!-- What is this resource? -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">What is this resource?</h3>
-            <p>The OpenAI Platform Documentation is the official technical reference maintained by OpenAI for developers who want to integrate AI capabilities into their own applications. It covers everything from making your first API call to building production-ready features using OpenAI's language models, including GPT-4o and GPT-3.5 Turbo. This is the primary resource for anyone working directly with OpenAI's API.</p>
+            <p>The OpenAI Platform Documentation is the official, comprehensive technical reference maintained by OpenAI for developers building AI-powered applications. It covers the complete lifecycle of working with OpenAI's API — from generating your first API key and making your first request, all the way to deploying production-grade features using their most advanced models, including GPT-4o, GPT-4o mini, and o1 (the reasoning-focused model). If you are integrating AI into any kind of software project, this documentation is the single most important reference you will return to repeatedly.</p>
+            <p>What makes this documentation particularly valuable is that it is written specifically for developers, not end users. It assumes you know how to write code and focuses on the mechanics of the API: how requests are structured, what parameters control model behavior, how responses are formatted, and how to handle errors. It is precise, well-organized, and regularly updated to reflect new models and features as OpenAI releases them.</p>
           </div>
 
+          <!-- What's in it? -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">What's in it?</h3>
-            <p>The documentation is organized into several key areas. The Quickstart guide walks you through authentication, your first API call, and parsing the response. The Chat Completions section — the most important part for building any conversational feature — explains how to structure messages, manage conversation history, and control model behavior through parameters like temperature and max tokens. There are also dedicated sections on function calling (letting the model trigger actions in your app), embeddings, image generation, and audio. The docs also include a full model comparison page so you can choose the right model for your use case based on capability and cost.</p>
-            <p>Critically for developers, the documentation covers token usage in depth — explaining what tokens are, how they're counted, how conversation history length affects your token count per request, and how all of this maps to cost per API call. The rate limits section is also essential reading before you deploy anything.</p>
+            <p>The documentation is organized around OpenAI's core API endpoints. The <strong>Chat Completions</strong> guide — the most critical section for most developers — explains how to structure the <code>messages</code> array, which holds the entire conversation history sent with every API call. Each message has a <code>role</code> (system, user, or assistant) and <code>content</code>, and understanding how this structure works is fundamental to building any chatbot or conversational feature. The guide explains how parameters like <code>temperature</code> (0 to 2, controlling randomness), <code>max_tokens</code> (limiting response length), and <code>top_p</code> affect model outputs.</p>
+            <p>The <strong>Function Calling</strong> section — now called "tool use" — is one of the most powerful features in the docs. It lets you define functions in your code and give the model the ability to call them by returning structured JSON instead of plain text. For example, you could give the model a <code>get_weather(city)</code> function, and when a user asks "what's the weather in New York?", the model responds with a structured function call your app can execute. This is the foundation of agentic AI applications.</p>
+            <p>Other essential sections include the <strong>Embeddings</strong> guide (converting text into numerical vectors for search and similarity tasks), <strong>Assistants API</strong> (for building persistent, stateful AI assistants with built-in memory and file processing), the <strong>Models</strong> overview comparing capabilities and pricing across all available models, and the <strong>Rate Limits</strong> reference explaining request-per-minute caps and how to handle <code>429</code> errors gracefully.</p>
           </div>
 
+          <!-- How is it relevant? -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">How is it relevant to your purpose?</h3>
-            <p>If you're building any kind of AI-powered feature — a chatbot, a text generator, a question-answering system — you will almost certainly use the OpenAI API at some point. This documentation is where you'll find everything you need to make it work. For developers building something like a study tool or productivity app with AI, the Chat Completions and token management sections are directly applicable. Understanding how conversation context is passed in each API call, and how that affects both behavior and cost, is not intuitive when you're starting out, and this documentation explains it more clearly than any third-party tutorial.</p>
+            <p>If you are building any kind of AI-powered feature — a chatbot, an intelligent search tool, a code assistant, or a document summarizer — you will almost certainly use the OpenAI API as your starting point. This documentation is where you will find everything you need to make it work correctly and efficiently. For a developer building something like a study app with AI-generated flashcards, a customer support bot, or a writing assistant, the Chat Completions endpoint is the core building block and this documentation explains it better than any third-party tutorial.</p>
+            <p>Understanding the API mechanics covered here has real financial stakes: every API call costs money based on token count, and a badly structured application can easily burn through a monthly budget in a day. The docs explain exactly how tokens are counted, how conversation history accumulates costs across turns, and what strategies (like truncating old messages) prevent runaway spending. For a developer moving from prototype to real users, this knowledge is not optional — it directly affects whether your application is economically viable.</p>
           </div>
 
+          <!-- Callout -->
+          <div class="devai-callout">
+            <p class="devai-callout__label">Key concept</p>
+            <p>Every API call to the Chat Completions endpoint includes the <em>entire conversation history</em> — not just the latest message. If a user has had a 20-message back-and-forth with your chatbot, all 20 messages are re-sent with every new request. This is how the model "remembers" context, and it means your token usage (and cost) grows with every turn. Understanding this early prevents expensive surprises.</p>
+          </div>
+
+          <!-- Tips -->
           <aside class="tips-panel">
             <h3 class="tips-panel__title">Tips for using this resource effectively</h3>
             <ul>
-              <li>Start with the <strong>Quickstart</strong> section before reading anything else — get a working API call running first, then go deeper.</li>
-              <li>The <strong>Chat Completions</strong> guide is the most important section for building conversational features. Read it carefully, especially the part on how the <code>messages</code> array works.</li>
-              <li>Use the <strong>interactive Playground</strong> (linked from the dashboard) to test prompts and model behavior before writing any code.</li>
-              <li>Check the <strong>model pricing page</strong> early — knowing the cost per 1,000 tokens for each model will help you make smarter decisions about which model to use.</li>
-              <li>When troubleshooting, the <strong>Error Codes</strong> reference page explains every API error you might hit and how to handle it.</li>
+              <li>Start with the <strong>Quickstart</strong> section before reading anything else — it gets you a working Python or Node.js API call in under 10 minutes and gives you a concrete foundation before you go deeper into any specific feature.</li>
+              <li>The <strong>Chat Completions</strong> guide is the single most important page in the documentation for most use cases. Read it carefully from top to bottom, especially the section explaining how the <code>messages</code> array works — this is the concept that takes the longest to fully internalize.</li>
+              <li>Use the <strong>interactive Playground</strong> (linked from platform.openai.com) to experiment with different system prompts, temperatures, and models before writing a single line of code. It shows you token counts in real time and helps you prototype fast.</li>
+              <li>Check the <strong>Models</strong> page and pricing calculator early. GPT-4o mini costs roughly 15× less than GPT-4o and handles most tasks just as well — starting with the cheaper model and only upgrading when needed is standard practice.</li>
+              <li>When you hit errors in production, go directly to the <strong>Error Codes</strong> reference page — it lists every status code the API can return (400, 401, 429, 500) and explains exactly what each one means and how to recover from it.</li>
             </ul>
           </aside>
+
+          <!-- Video embed -->
+          <div class="devai-video-panel">
+            <p class="devai-video-panel__label">Recommended Watch</p>
+            <h3 class="devai-video-panel__title">OpenAI API Tutorial for Beginners</h3>
+            <p class="devai-video-panel__desc">A hands-on walkthrough of the OpenAI API using Python — covers authentication, Chat Completions, building a basic chatbot, and handling token limits. Great companion to reading the docs.</p>
+            <div class="devai-video-wrap">
+              <iframe
+                src="https://www.youtube.com/embed/OTVE5iPMKLg"
+                title="OpenAI API Tutorial for Beginners"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+
+          <!-- Code example -->
+          <div class="devai-code-panel">
+            <h3 class="devai-code-panel__title">Quick Start: Chat Completions in Python</h3>
+            <p class="devai-code-panel__desc">This is the core pattern you'll use in virtually every OpenAI-powered application. Install with <code>pip install openai</code>, then run this to make your first API call.</p>
+            <div class="devai-code-block">
+              <code><span class="dk">from</span> <span class="dp">openai</span> <span class="dk">import</span> <span class="dp">OpenAI</span>
+
+<span class="dc"># Initialize client with your API key from platform.openai.com</span>
+<span class="dp">client</span> = <span class="df">OpenAI</span>(api_key=<span class="ds">"sk-..."</span>)
+
+<span class="dc"># Build the conversation: system sets behavior, user sends a message</span>
+<span class="dp">response</span> = <span class="dp">client</span>.<span class="df">chat.completions.create</span>(
+    model=<span class="ds">"gpt-4o-mini"</span>,
+    messages=[
+        {<span class="ds">"role"</span>: <span class="ds">"system"</span>,  <span class="ds">"content"</span>: <span class="ds">"You are a helpful coding assistant."</span>},
+        {<span class="ds">"role"</span>: <span class="ds">"user"</span>,    <span class="ds">"content"</span>: <span class="ds">"Explain what an API is in two sentences."</span>}
+    ],
+    temperature=<span class="dn">0.7</span>,
+    max_tokens=<span class="dn">256</span>
+)
+
+<span class="dc"># Extract the text response</span>
+<span class="dp">answer</span> = <span class="dp">response</span>.<span class="dp">choices</span>[<span class="dn">0</span>].<span class="dp">message</span>.<span class="dp">content</span>
+<span class="df">print</span>(<span class="dp">answer</span>)
+
+<span class="dc"># Always check token usage — this is what you're billed on</span>
+<span class="df">print</span>(<span class="ds">f"Tokens used: </span><span class="dp">{response.usage.total_tokens}</span><span class="ds">"</span>)
+<span class="df">print</span>(<span class="ds">f"  Input:  </span><span class="dp">{response.usage.prompt_tokens}</span><span class="ds">"</span>)
+<span class="df">print</span>(<span class="ds">f"  Output: </span><span class="dp">{response.usage.completion_tokens}</span><span class="ds">"</span>)</code>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
