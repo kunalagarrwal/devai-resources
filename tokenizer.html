@@ -116,7 +116,7 @@
           <!-- Callout -->
           <div class="devai-callout">
             <p class="devai-callout__label">Real cost example (2025 pricing)</p>
-            <p>A GPT-4.1 system prompt of 500 words is roughly 650 tokens. If your chatbot sends that on every request and you get 10,000 daily users each sending 5 messages, that's 32.5 million tokens <em>just from the system prompt</em> per day — about $65/day at GPT-4.1 input pricing ($2/1M). Switch to GPT-4.1 mini and it drops to $13/day. Enable OpenAI's prompt caching (75% discount on cached tokens) and it falls to ~$3.25/day. Tiktoken makes these calculations trivial — use it to run the math before you deploy, not after you see the bill.</p>
+            <p>A GPT-5.4 system prompt of 500 words is roughly 650 tokens. If your chatbot sends that on every request and you get 10,000 daily users each sending 5 messages, that's 32.5 million tokens <em>just from the system prompt</em> per day — about $81/day at GPT-5.4 input pricing ($2.50/1M). Switch to GPT-5.4 mini and it drops to $24/day. Enable OpenAI's prompt caching (50% discount on cached tokens) and it falls to ~$12/day. Drop to GPT-5.4 nano ($0.20/1M) and it's under $2/day. Tiktoken makes these calculations trivial — use it to run the math before you deploy, not after you see the bill.</p>
           </div>
 
           <!-- Tips -->
@@ -163,7 +163,7 @@
 <span class="df">print</span>(<span class="ds">f"Token IDs:   </span><span class="dp">{tokens}</span><span class="ds">"</span>)
 
 <span class="dc"># --- Count tokens for a full chat conversation (incl. overhead) ---</span>
-<span class="dk">def</span> <span class="df">count_chat_tokens</span>(<span class="dp">messages</span>, <span class="dp">model</span>=<span class="ds">"gpt-4.1"</span>):
+<span class="dk">def</span> <span class="df">count_chat_tokens</span>(<span class="dp">messages</span>, <span class="dp">model</span>=<span class="ds">"gpt-5.4"</span>):
     <span class="ds">"""Returns total token count for a messages[] array."""</span>
     <span class="dp">enc</span> = <span class="dp">tiktoken</span>.<span class="df">encoding_for_model</span>(<span class="dp">model</span>)
     <span class="dp">tokens_per_message</span> = <span class="dn">3</span>  <span class="dc"># every message adds ~3 tokens of overhead</span>
