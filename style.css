@@ -1196,3 +1196,311 @@
 }
 
 /* ── end iframe embed mode ─────────────────────────────────── */
+
+/* ══════════════════════════════════════════════════════════════
+   AI Integration Flowchart
+   ══════════════════════════════════════════════════════════════ */
+
+.flow-section {
+  padding-top: clamp(3.5rem, 7vw, 5rem) !important;
+  padding-bottom: clamp(3.5rem, 7vw, 5.5rem) !important;
+}
+
+.flow-eyebrow {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: #0071e3 !important;
+  margin: 0 0 12px !important;
+}
+
+.flow-subhead {
+  font-size: 15px !important;
+  color: var(--devai-muted) !important;
+  margin: 0 0 52px !important;
+  line-height: 1.5 !important;
+}
+
+/* ── timeline container ── */
+.flow-timeline {
+  position: relative;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+/* vertical rail */
+.flow-timeline::before {
+  content: "";
+  position: absolute;
+  left: 28px;
+  top: 20px;
+  bottom: 20px;
+  width: 2px;
+  background: linear-gradient(180deg, #0071e3 0%, rgba(0,113,227,0.15) 100%);
+  border-radius: 2px;
+  z-index: 0;
+}
+
+/* ── individual step ── */
+.flow-step {
+  position: relative;
+  padding-left: 72px;
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+
+.flow-step:last-child {
+  margin-bottom: 0;
+}
+
+/* numbered circle */
+.flow-step__dot {
+  position: absolute;
+  left: 12px;
+  top: 18px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid rgba(0,113,227,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  color: #0071e3;
+  letter-spacing: -0.01em;
+  z-index: 1;
+  transition: background 0.22s ease, border-color 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+  flex-shrink: 0;
+}
+
+.flow-step.is-active .flow-step__dot,
+.flow-step:hover .flow-step__dot {
+  background: #0071e3;
+  border-color: #0071e3;
+  color: #fff;
+  transform: scale(1.12);
+  box-shadow: 0 0 0 5px rgba(0,113,227,0.12);
+}
+
+/* card */
+.flow-step__card {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
+}
+
+.flow-step:hover .flow-step__card {
+  border-color: rgba(0,113,227,0.22);
+  box-shadow: 0 4px 20px rgba(0,113,227,0.08);
+  transform: translateX(3px);
+}
+
+.flow-step.is-active .flow-step__card {
+  border-color: rgba(0,113,227,0.35);
+  box-shadow: 0 8px 32px rgba(0,113,227,0.12);
+  transform: translateX(4px);
+}
+
+/* card header row */
+.flow-step__header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 17px 20px;
+  user-select: none;
+}
+
+.flow-step__icon {
+  font-size: 22px;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 36px;
+  text-align: center;
+}
+
+.flow-step__title-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.flow-step__title {
+  font-size: 15px !important;
+  font-weight: 680 !important;
+  color: var(--devai-text) !important;
+  margin: 0 0 2px !important;
+  line-height: 1.3 !important;
+  letter-spacing: -0.01em !important;
+}
+
+.flow-step__tagline {
+  font-size: 12px !important;
+  color: var(--devai-muted) !important;
+  margin: 0 !important;
+  line-height: 1.4 !important;
+}
+
+.flow-step__chevron {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: #c7c7cc;
+  transition: transform 0.22s ease, color 0.22s ease;
+}
+
+.flow-step.is-active .flow-step__chevron {
+  transform: rotate(180deg);
+  color: #0071e3;
+}
+
+/* expandable body */
+.flow-step__body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.28s ease;
+  border-top: 0px solid rgba(0,113,227,0.1);
+}
+
+.flow-step.is-active .flow-step__body {
+  grid-template-rows: 1fr;
+  border-top-width: 1px;
+}
+
+.flow-step__body-inner {
+  overflow: hidden;
+}
+
+.flow-step__body-content {
+  padding: 18px 20px 20px 20px;
+}
+
+.flow-step__desc {
+  font-size: 13.5px !important;
+  color: #3a3a3c !important;
+  line-height: 1.65 !important;
+  margin: 0 0 16px !important;
+}
+
+/* tip box inside step */
+.flow-step__tip {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  background: rgba(0,113,227,0.05);
+  border: 1px solid rgba(0,113,227,0.12);
+  border-radius: 10px;
+  padding: 11px 14px;
+  margin-bottom: 16px;
+}
+
+.flow-step__tip-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.flow-step__tip-text {
+  font-size: 12px !important;
+  color: #004f9e !important;
+  line-height: 1.55 !important;
+  margin: 0 !important;
+}
+
+/* resource chips */
+.flow-step__resources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  align-items: center;
+}
+
+.flow-step__resources-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #8e8e93;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  width: 100%;
+  margin-bottom: 2px;
+}
+
+.flow-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px 5px 10px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid rgba(0,113,227,0.22);
+  font-size: 12px;
+  font-weight: 600;
+  color: #0071e3 !important;
+  text-decoration: none !important;
+  transition: background 0.16s ease, border-color 0.16s ease, transform 0.16s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.flow-chip:hover {
+  background: rgba(0,113,227,0.07) !important;
+  border-color: #0071e3 !important;
+  transform: translateY(-1px);
+  text-decoration: none !important;
+}
+
+.flow-chip__arrow {
+  font-size: 10px;
+  opacity: 0.6;
+}
+
+/* ── progress bar at top ── */
+.flow-progress {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 28px;
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flow-progress__seg {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(0,0,0,0.07);
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.flow-progress__seg.is-done {
+  background: #0071e3;
+}
+
+/* responsive */
+@media (max-width: 600px) {
+  .flow-timeline::before {
+    left: 16px;
+  }
+  .flow-step {
+    padding-left: 52px;
+  }
+  .flow-step__dot {
+    left: 0;
+    width: 30px;
+    height: 30px;
+    font-size: 10px;
+  }
+  .flow-step__header {
+    padding: 14px 16px;
+    gap: 10px;
+  }
+  .flow-step__icon {
+    display: none;
+  }
+}
+
+/* ── end AI Integration Flowchart ─────────────────────────── */

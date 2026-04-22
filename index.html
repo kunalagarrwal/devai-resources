@@ -91,6 +91,278 @@
       </div>
     </section>
 
+    <!-- ══ AI Integration Flowchart ══════════════════════════════ -->
+    <section class="band band--white flow-section">
+      <div class="layout-constrain">
+        <p class="flow-eyebrow">Step-by-Step Process</p>
+        <h2 class="section-headline">How to Integrate AI into a Mobile App</h2>
+        <p class="flow-subhead">Click any step to expand the details. Each step links to the resources in this guide that help you complete it.</p>
+
+        <!-- progress segments -->
+        <div class="flow-progress" id="flowProgress">
+          <div class="flow-progress__seg" data-seg="0"></div>
+          <div class="flow-progress__seg" data-seg="1"></div>
+          <div class="flow-progress__seg" data-seg="2"></div>
+          <div class="flow-progress__seg" data-seg="3"></div>
+          <div class="flow-progress__seg" data-seg="4"></div>
+          <div class="flow-progress__seg" data-seg="5"></div>
+          <div class="flow-progress__seg" data-seg="6"></div>
+          <div class="flow-progress__seg" data-seg="7"></div>
+        </div>
+
+        <div class="flow-timeline" id="flowTimeline">
+
+          <!-- Step 1 -->
+          <div class="flow-step" data-step="0">
+            <div class="flow-step__dot">01</div>
+            <div class="flow-step__card">
+              <div class="flow-step__header">
+                <span class="flow-step__icon">🎯</span>
+                <div class="flow-step__title-wrap">
+                  <p class="flow-step__title">Define Your AI Feature</p>
+                  <p class="flow-step__tagline">Decide exactly what role AI plays in your app</p>
+                </div>
+                <svg class="flow-step__chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="flow-step__body">
+                <div class="flow-step__body-inner">
+                  <div class="flow-step__body-content">
+                    <p class="flow-step__desc">Before writing a line of code, define precisely what AI should do in your application. Common use cases include: a conversational chatbot assistant, AI-generated content (descriptions, summaries, recommendations), classification (sentiment, intent detection), smart search, or document Q&amp;A. The clearer your use case, the easier every subsequent decision becomes — model choice, prompt design, and architecture all follow from this.</p>
+                    <div class="flow-step__tip">
+                      <span class="flow-step__tip-icon">💡</span>
+                      <p class="flow-step__tip-text">Write a one-sentence description: <em>"When a user does X, the AI should respond with Y in Z format."</em> This becomes the foundation of your system prompt.</p>
+                    </div>
+                    <div class="flow-step__resources">
+                      <span class="flow-step__resources-label">Helpful resources</span>
+                      <a class="flow-chip" href="prompting-guide.html">📖 Prompting Guide <span class="flow-chip__arrow">↗</span></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="flow-step" data-step="1">
+            <div class="flow-step__dot">02</div>
+            <div class="flow-step__card">
+              <div class="flow-step__header">
+                <span class="flow-step__icon">🤖</span>
+                <div class="flow-step__title-wrap">
+                  <p class="flow-step__title">Choose an AI Provider</p>
+                  <p class="flow-step__tagline">Compare OpenAI, Anthropic, and open-source options</p>
+                </div>
+                <svg class="flow-step__chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="flow-step__body">
+                <div class="flow-step__body-inner">
+                  <div class="flow-step__body-content">
+                    <p class="flow-step__desc"><strong>OpenAI (GPT-4o)</strong> is the most widely supported choice — excellent performance, large ecosystem, and the easiest APIs to get started with. <strong>Anthropic (Claude)</strong> offers a 200k token context window, making it ideal for apps that work with large documents or long conversations. <strong>Hugging Face</strong> gives you open-source models you can self-host — no per-token cost, full control, but you manage the infrastructure. For most mobile app projects, OpenAI or Anthropic is the right starting point.</p>
+                    <div class="flow-step__tip">
+                      <span class="flow-step__tip-icon">💡</span>
+                      <p class="flow-step__tip-text">Start with <strong>GPT-4o-mini</strong> — it's ~20× cheaper than GPT-4o with very strong performance for most tasks. Upgrade only if output quality is genuinely insufficient.</p>
+                    </div>
+                    <div class="flow-step__resources">
+                      <span class="flow-step__resources-label">Helpful resources</span>
+                      <a class="flow-chip" href="openai-docs.html">⚡ OpenAI Docs <span class="flow-chip__arrow">↗</span></a>
+                      <a class="flow-chip" href="anthropic.html">🧠 Anthropic / Claude <span class="flow-chip__arrow">↗</span></a>
+                      <a class="flow-chip" href="huggingface.html">🤗 Hugging Face <span class="flow-chip__arrow">↗</span></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="flow-step" data-step="2">
+            <div class="flow-step__dot">03</div>
+            <div class="flow-step__card">
+              <div class="flow-step__header">
+                <span class="flow-step__icon">🔑</span>
+                <div class="flow-step__title-wrap">
+                  <p class="flow-step__title">Get API Access &amp; Set Up a Backend</p>
+                  <p class="flow-step__tagline">Never call AI APIs directly from a mobile app</p>
+                </div>
+                <svg class="flow-step__chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="flow-step__body">
+                <div class="flow-step__body-inner">
+                  <div class="flow-step__body-content">
+                    <p class="flow-step__desc">Sign up for your chosen provider and get an API key. Then — critically — build a lightweight server-side layer between your mobile app and the AI API. Your mobile app calls <em>your</em> server, and your server calls the AI API. This pattern is non-negotiable: embedding an API key directly in a mobile app exposes it to anyone who decompiles the binary. Use Node.js (Express), Python (FastAPI or Flask), or any backend you're comfortable with.</p>
+                    <div class="flow-step__tip">
+                      <span class="flow-step__tip-icon">⚠️</span>
+                      <p class="flow-step__tip-text"><strong>Never put your API key in your mobile app's source code.</strong> Store it server-side in an environment variable (<code>.env</code> file). Your mobile app authenticates to your backend — your backend authenticates to the AI provider.</p>
+                    </div>
+                    <div class="flow-step__resources">
+                      <span class="flow-step__resources-label">Helpful resources</span>
+                      <a class="flow-chip" href="openai-docs.html">⚡ OpenAI Docs <span class="flow-chip__arrow">↗</span></a>
+                      <a class="flow-chip" href="anthropic.html">🧠 Anthropic Docs <span class="flow-chip__arrow">↗</span></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="flow-step" data-step="3">
+            <div class="flow-step__dot">04</div>
+            <div class="flow-step__card">
+              <div class="flow-step__header">
+                <span class="flow-step__icon">📝</span>
+                <div class="flow-step__title-wrap">
+                  <p class="flow-step__title">Engineer Your Prompts</p>
+                  <p class="flow-step__tagline">Write the system prompt that shapes every AI response</p>
+                </div>
+                <svg class="flow-step__chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="flow-step__body">
+                <div class="flow-step__body-inner">
+                  <div class="flow-step__body-content">
+                    <p class="flow-step__desc">Your system prompt is the single most important piece of code in your AI feature. It defines the AI's persona, scope, output format, and constraints. Use <strong>few-shot examples</strong> (2–3 input/output pairs) to lock in a consistent response format — especially important for structured outputs like JSON. For any feature involving reasoning or comparison, add chain-of-thought instruction: "Think through this step by step before responding."</p>
+                    <div class="flow-step__tip">
+                      <span class="flow-step__tip-icon">💡</span>
+                      <p class="flow-step__tip-text">Set <code>temperature: 0</code> for deterministic, structured outputs (JSON, classifications). Raise it toward 0.7–1.0 for creative tasks. This one setting dramatically affects output consistency.</p>
+                    </div>
+                    <div class="flow-step__resources">
+                      <span class="flow-step__resources-label">Helpful resources</span>
+                      <a class="flow-chip" href="prompting-guide.html">📖 Prompting Guide <span class="flow-chip__arrow">↗</span></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="flow-step" data-step="4">
+            <div class="flow-step__dot">05</div>
+            <div class="flow-step__card">
+              <div class="flow-step__header">
+                <span class="flow-step__icon">🪙</span>
+                <div class="flow-step__title-wrap">
+                  <p class="flow-step__title">Manage Tokens &amp; Costs</p>
+                  <p class="flow-step__tagline">Count tokens before every API call — or get surprised by the bill</p>
+                </div>
+                <svg class="flow-step__chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="flow-step__body">
+                <div class="flow-step__body-inner">
+                  <div class="flow-step__body-content">
+                    <p class="flow-step__desc">Every API call includes your system prompt + full conversation history + the new user message + the model's response — all counted as tokens and all billed. In a chatbot, conversation history grows with every turn. By turn 20, you might be sending 5,000+ tokens per request even if each individual message is short. Use <code>tiktoken</code> to count tokens before every API call, and implement a sliding window that trims the oldest messages when the count exceeds your budget.</p>
+                    <div class="flow-step__tip">
+                      <span class="flow-step__tip-icon">💡</span>
+                      <p class="flow-step__tip-text">Set a hard spending limit in your provider's dashboard from day one. Even during development, a runaway loop or bug can burn through credits fast. Treat the limit as a circuit breaker, not a budget.</p>
+                    </div>
+                    <div class="flow-step__resources">
+                      <span class="flow-step__resources-label">Helpful resources</span>
+                      <a class="flow-chip" href="tokenizer.html">🔢 Tokenizer &amp; Tiktoken <span class="flow-chip__arrow">↗</span></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 6 -->
+          <div class="flow-step" data-step="5">
+            <div class="flow-step__dot">06</div>
+            <div class="flow-step__card">
+              <div class="flow-step__header">
+                <span class="flow-step__icon">🔌</span>
+                <div class="flow-step__title-wrap">
+                  <p class="flow-step__title">Build the Integration</p>
+                  <p class="flow-step__tagline">Wire together prompts, model calls, and response parsing</p>
+                </div>
+                <svg class="flow-step__chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="flow-step__body">
+                <div class="flow-step__body-inner">
+                  <div class="flow-step__body-content">
+                    <p class="flow-step__desc">Now write the actual integration code on your backend. Use the provider's official SDK (openai Python package, anthropic Python package) for simplest integration. For more complex workflows — RAG pipelines, memory, chaining multiple calls — use LangChain's LCEL pattern (<code>prompt | model | parser</code>) to keep your code composable and maintainable. Your mobile app sends a request to your backend endpoint, your backend calls the AI, and returns a clean response to the app.</p>
+                    <div class="flow-step__tip">
+                      <span class="flow-step__tip-icon">💡</span>
+                      <p class="flow-step__tip-text">Parse and validate the AI's output on the backend before sending it to the app. Never trust raw model output — if you're expecting JSON, use <code>json.loads()</code> in a try/except and have a fallback for malformed responses.</p>
+                    </div>
+                    <div class="flow-step__resources">
+                      <span class="flow-step__resources-label">Helpful resources</span>
+                      <a class="flow-chip" href="langchain.html">⛓️ LangChain <span class="flow-chip__arrow">↗</span></a>
+                      <a class="flow-chip" href="openai-docs.html">⚡ OpenAI Docs <span class="flow-chip__arrow">↗</span></a>
+                      <a class="flow-chip" href="anthropic.html">🧠 Anthropic Docs <span class="flow-chip__arrow">↗</span></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 7 -->
+          <div class="flow-step" data-step="6">
+            <div class="flow-step__dot">07</div>
+            <div class="flow-step__card">
+              <div class="flow-step__header">
+                <span class="flow-step__icon">🧪</span>
+                <div class="flow-step__title-wrap">
+                  <p class="flow-step__title">Test &amp; Iterate on Prompts</p>
+                  <p class="flow-step__tagline">Evaluate outputs, find edge cases, refine until consistent</p>
+                </div>
+                <svg class="flow-step__chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="flow-step__body">
+                <div class="flow-step__body-inner">
+                  <div class="flow-step__body-content">
+                    <p class="flow-step__desc">Run a systematic set of test inputs — including edge cases, ambiguous inputs, and adversarial prompts — and evaluate the AI's outputs against your expected behavior. When something goes wrong, the root cause is almost always the prompt, not the model. Add more specific instructions, add a counterexample to your few-shot set, or tighten your output format specification. Keep a running log of failure cases and the prompt changes that fixed them.</p>
+                    <div class="flow-step__tip">
+                      <span class="flow-step__tip-icon">💡</span>
+                      <p class="flow-step__tip-text">Use the <strong>OpenAI Playground</strong> or <strong>Claude.ai</strong> to rapidly prototype prompt changes before updating your code. Iteration in a chat interface is 10× faster than editing code and rerunning tests.</p>
+                    </div>
+                    <div class="flow-step__resources">
+                      <span class="flow-step__resources-label">Helpful resources</span>
+                      <a class="flow-chip" href="prompting-guide.html">📖 Prompting Guide <span class="flow-chip__arrow">↗</span></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 8 -->
+          <div class="flow-step" data-step="7">
+            <div class="flow-step__dot">08</div>
+            <div class="flow-step__card">
+              <div class="flow-step__header">
+                <span class="flow-step__icon">🚀</span>
+                <div class="flow-step__title-wrap">
+                  <p class="flow-step__title">Deploy &amp; Monitor</p>
+                  <p class="flow-step__tagline">Production API keys, error handling, and usage monitoring</p>
+                </div>
+                <svg class="flow-step__chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="flow-step__body">
+                <div class="flow-step__body-inner">
+                  <div class="flow-step__body-content">
+                    <p class="flow-step__desc">When deploying to production, use separate API keys from development — rotate your dev key, never ship it. Implement retry logic with exponential backoff for rate limit errors (HTTP 429). Add request timeouts so a slow model response doesn't hang your app. Log token usage per user/session so you can identify heavy users or unexpected cost spikes. Monitor response latency — AI APIs are slower than typical REST calls, and your app's UX should use streaming or loading states to handle this gracefully.</p>
+                    <div class="flow-step__tip">
+                      <span class="flow-step__tip-icon">💡</span>
+                      <p class="flow-step__tip-text">Use <strong>prompt caching</strong> (available on both OpenAI and Anthropic) to cache your system prompt. If your system prompt is 500 tokens and you send 50,000 requests/day, caching it saves ~90% of those input tokens — significant cost savings at scale.</p>
+                    </div>
+                    <div class="flow-step__resources">
+                      <span class="flow-step__resources-label">Helpful resources</span>
+                      <a class="flow-chip" href="tokenizer.html">🔢 Tokenizer &amp; Tiktoken <span class="flow-chip__arrow">↗</span></a>
+                      <a class="flow-chip" href="anthropic.html">🧠 Anthropic (Prompt Caching) <span class="flow-chip__arrow">↗</span></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /.flow-timeline -->
+      </div>
+    </section>
+
+    <!-- ══ Table of Contents ═══════════════════════════════════ -->
     <section class="band band--white">
       <div class="layout-constrain">
         <h2 class="section-headline">Table of Contents</h2>
@@ -136,5 +408,58 @@
   </footer>
 
   <script src="search.js"></script>
+  <script>
+  /* ── AI Integration Flowchart interaction ──────────────────── */
+  (function () {
+    var steps    = document.querySelectorAll('.flow-step');
+    var segs     = document.querySelectorAll('.flow-progress__seg');
+    var openIdx  = -1;
+
+    function openStep(idx) {
+      steps.forEach(function (s, i) {
+        s.classList.toggle('is-active', i === idx);
+      });
+      segs.forEach(function (seg, i) {
+        seg.classList.toggle('is-done', i <= idx);
+      });
+      openIdx = idx;
+    }
+
+    steps.forEach(function (step, idx) {
+      step.addEventListener('click', function (e) {
+        /* don't close when clicking a resource chip link */
+        if (e.target.closest('.flow-chip')) return;
+        openStep(openIdx === idx ? -1 : idx);
+      });
+    });
+
+    segs.forEach(function (seg, idx) {
+      seg.addEventListener('click', function () { openStep(idx); });
+    });
+
+    /* open first step by default */
+    openStep(0);
+
+    /* Animate steps in on scroll */
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity  = '1';
+            entry.target.style.transform = 'translateY(0)';
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+
+      steps.forEach(function (step, i) {
+        step.style.opacity   = '0';
+        step.style.transform = 'translateY(18px)';
+        step.style.transition = 'opacity 0.4s ease ' + (i * 0.06) + 's, transform 0.4s ease ' + (i * 0.06) + 's';
+        io.observe(step);
+      });
+    }
+  })();
+  </script>
 </body>
 </html>
