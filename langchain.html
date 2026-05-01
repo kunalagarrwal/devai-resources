@@ -88,26 +88,119 @@
       <div class="layout-constrain">
         <div class="article-stack">
 
-          <!-- What is this resource? -->
+          <!-- Overview -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">Overview</h3>
-            <p><a href="https://python.langchain.com/docs" target="_blank">LangChain</a> is an open-source framework designed to make building applications with large language models faster, more modular, and more maintainable. In October 2025, the team released <strong>LangChain v1.0</strong> and <strong>LangGraph v1.0</strong> simultaneously — signaling production stability after years of rapid iteration. LangChain handles the component layer (prompt templates, model integrations, output parsers, retrievers), while <strong>LangGraph</strong> handles the orchestration layer for stateful, multi-step agent workflows. As of April 2026, LangGraph is at version 1.1.8 and is the recommended way to build production agents — the older "Agents" abstraction in LangChain itself now delegates to LangGraph under the hood.</p>
-            <p>LangChain matters because almost every production AI application needs features that go beyond a single API call: persistent conversation memory, the ability to query a database or search the web, structured output parsing, and routing logic that decides which model or tool to use based on the input. Building these from scratch with raw API calls is tedious and error-prone. LangChain provides tested, reusable implementations of all of them, backed by extensive documentation and a large community. The ecosystem also includes <strong>LangSmith</strong> — a hosted observability platform for logging, tracing, and evaluating LLM calls in production — which integrates directly with both LangChain and LangGraph.</p>
+            <p class="devai-section-lead"><a href="https://python.langchain.com/docs" target="_blank">LangChain</a> is an open-source Python/JS framework for building LLM-powered applications. It provides reusable components for prompt management, model switching, memory, and data retrieval — plus <strong>LangGraph</strong> for stateful agent workflows and <strong>LangSmith</strong> for production observability.</p>
+
+            <div class="devai-table-wrap">
+              <table class="devai-table">
+                <thead>
+                  <tr><th>Tool</th><th>Version</th><th>What it does</th><th>When to use</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>LangChain (LCEL)</strong></td>
+                    <td>v1.0 (Oct 2025)</td>
+                    <td>Components layer: prompt templates, model wrappers, output parsers. Compose with <code>prompt | llm | parser</code>.</td>
+                    <td>Simple, linear pipelines and RAG</td>
+                  </tr>
+                  <tr class="devai-table__highlight">
+                    <td><strong>LangGraph</strong> <span class="devai-badge">recommended for agents</span></td>
+                    <td>v1.1.8</td>
+                    <td>Orchestration layer: stateful directed graphs, loops, branching, human-in-the-loop, node caching.</td>
+                    <td>Multi-step agents, complex workflows</td>
+                  </tr>
+                  <tr>
+                    <td><strong>LangSmith</strong></td>
+                    <td>Hosted SaaS</td>
+                    <td>Logs every LLM call, input, output, and latency — with trace viewer and eval tools.</td>
+                    <td>Debugging and production monitoring</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
 
           <!-- What's in it? -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">What's in it?</h3>
-            <p>The documentation is organized around LangChain's core abstractions. <strong>Chat Models</strong> provides a unified interface to 50+ LLM providers — OpenAI, Anthropic, Hugging Face, Google, Mistral, and more — through the same Python class structure. Switching providers is a one-line change, meaning your application logic stays provider-agnostic. <strong>Prompt Templates</strong> allows you to define prompts with variable placeholders that get filled at runtime, making prompts reusable, testable, and easy to version-control.</p>
-            <p><strong>Chains and LCEL</strong> is where LangChain's power shows most clearly. Using the pipe operator (<code>|</code>), you compose a prompt, model, and parser into a single executable chain: <code>chain = prompt | llm | parser</code>. This is the core pattern for simple, linear workflows. For anything more complex — loops, branching, tool use, human-in-the-loop — you use <strong>LangGraph</strong>. LangGraph models workflows as a directed graph where each node is a function and edges are conditional. It has native support for <strong>node caching</strong> (skip re-running expensive nodes if inputs haven't changed), <strong>deferred nodes</strong> (run in background while others proceed), and <strong>pre/post hooks</strong> for observability. Agents in LangChain are now built on LangGraph internally.</p>
-            <p>The <strong>Retrieval-Augmented Generation (RAG)</strong> section is one of the most practically valuable parts of the documentation. RAG is the architecture behind "chat with your documents" applications: embed a document into vector representations, store in a vector database (Chroma, Pinecone, FAISS), and retrieve relevant chunks at query time to include in the prompt. LangChain has built-in support for dozens of document loaders (PDF, HTML, CSV, code files), text splitters, embedding models, and vector stores. <strong>LangSmith</strong> is the companion observability tool — it logs every LLM call, input, output, and latency in your LangChain app, making it far easier to debug and improve prompts in production than reading raw API logs.</p>
+            <p class="devai-section-lead">LangChain documentation is organized by abstraction layer. Here are the sections you'll use most:</p>
+
+            <ul class="devai-icon-list">
+              <li>
+                <span class="devai-icon-list__icon">🔌</span>
+                <div class="devai-icon-list__body">
+                  <strong>Chat Models</strong>
+                  <span>Unified interface to 50+ LLM providers (OpenAI, Anthropic, HuggingFace, Mistral, Google…). Switching providers is literally a one-line change — your app logic stays provider-agnostic.</span>
+                </div>
+              </li>
+              <li>
+                <span class="devai-icon-list__icon">📝</span>
+                <div class="devai-icon-list__body">
+                  <strong>Prompt Templates + LCEL</strong>
+                  <span>Define prompts with variable placeholders, then chain them with models and parsers using the pipe operator: <code>chain = prompt | llm | parser</code>. Composable, reusable, and testable.</span>
+                </div>
+              </li>
+              <li>
+                <span class="devai-icon-list__icon">🗄️</span>
+                <div class="devai-icon-list__body">
+                  <strong>RAG (Retrieval-Augmented Generation)</strong>
+                  <span>The architecture behind "chat with your documents." Built-in loaders for PDF/HTML/CSV, text splitters, embedding models, and vector store integrations (Chroma, Pinecone, FAISS).</span>
+                </div>
+              </li>
+              <li>
+                <span class="devai-icon-list__icon">🕸️</span>
+                <div class="devai-icon-list__body">
+                  <strong>LangGraph</strong>
+                  <span>Models workflows as a directed graph — each node is a function, edges are conditional. Supports node caching, deferred nodes, and pre/post hooks. All LangChain "Agents" now run on LangGraph internally.</span>
+                </div>
+              </li>
+            </ul>
+
+            <!-- LCEL pipeline diagram -->
+            <div class="devai-diagram" style="padding:20px 24px">
+              <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--devai-muted);margin:0 0 14px">LCEL pipeline pattern</p>
+              <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap">
+                <div style="background:#fff;border:1px solid rgba(0,113,227,0.25);border-radius:10px;padding:10px 16px;text-align:center;min-width:110px">
+                  <div style="font-size:18px;margin-bottom:4px">📝</div>
+                  <div style="font-size:12px;font-weight:700;color:#1d1d1f">Prompt Template</div>
+                  <div style="font-size:11px;color:var(--devai-muted)">fills variables</div>
+                </div>
+                <div style="font-size:20px;color:rgba(0,113,227,0.5);padding:0 10px;font-weight:300">→</div>
+                <div style="background:#fff;border:1px solid rgba(0,113,227,0.25);border-radius:10px;padding:10px 16px;text-align:center;min-width:110px">
+                  <div style="font-size:18px;margin-bottom:4px">🤖</div>
+                  <div style="font-size:12px;font-weight:700;color:#1d1d1f">Chat Model</div>
+                  <div style="font-size:11px;color:var(--devai-muted)">OpenAI / Anthropic / HF</div>
+                </div>
+                <div style="font-size:20px;color:rgba(0,113,227,0.5);padding:0 10px;font-weight:300">→</div>
+                <div style="background:#fff;border:1px solid rgba(0,113,227,0.25);border-radius:10px;padding:10px 16px;text-align:center;min-width:110px">
+                  <div style="font-size:18px;margin-bottom:4px">⚙️</div>
+                  <div style="font-size:12px;font-weight:700;color:#1d1d1f">Output Parser</div>
+                  <div style="font-size:11px;color:var(--devai-muted)">string / JSON / object</div>
+                </div>
+                <div style="font-size:20px;color:rgba(0,113,227,0.5);padding:0 10px;font-weight:300">→</div>
+                <div style="background:rgba(52,199,89,0.08);border:1px solid rgba(52,199,89,0.3);border-radius:10px;padding:10px 16px;text-align:center;min-width:110px">
+                  <div style="font-size:18px;margin-bottom:4px">✅</div>
+                  <div style="font-size:12px;font-weight:700;color:#1a7f37">Your App</div>
+                  <div style="font-size:11px;color:var(--devai-muted)">clean structured output</div>
+                </div>
+              </div>
+              <p style="font-size:12px;color:var(--devai-muted);margin:12px 0 0"><code>chain = prompt | llm | StrOutputParser()</code> &nbsp;·&nbsp; <code>chain.invoke(&#123;"concept": "embeddings"&#125;)</code></p>
+            </div>
           </div>
 
-          <!-- How is it relevant? -->
+          <!-- Relevance -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">Relevance to Your Audience</h3>
-            <p>Once you're comfortable making basic API calls to an LLM, LangChain becomes the natural next step for building anything more complex. Consider a common scenario: you're building a chatbot that needs to answer questions based on a PDF document the user uploads, remember context across a multi-turn conversation, and occasionally look up current information from the web. Implementing all of that from scratch with raw API calls requires hundreds of lines of custom code and careful handling of edge cases. With LangChain, each of those features is a few lines using built-in components.</p>
-            <p>LangChain also has significant professional relevance. It's one of the most popular AI frameworks in the industry, appearing frequently in job descriptions for AI engineering and product development roles. Knowing the framework — not just the raw APIs it wraps — demonstrates a level of applied AI engineering sophistication that matters when presenting projects to employers or in interviews. Even if you ultimately build production applications on raw API calls for performance reasons, understanding how LangChain works gives you a clear mental model for the architecture of AI applications.</p>
+            <p class="devai-section-lead">Once you're comfortable with basic API calls, LangChain is the natural next step. It turns a multi-hundred-line custom implementation into a few lines of built-in components.</p>
+
+            <ul class="devai-check-list">
+              <li><strong>Complex apps without complex code.</strong> A chatbot with document Q&amp;A, multi-turn memory, and web lookup? Hundreds of lines raw — or a few built-in LangChain components.</li>
+              <li><strong>Provider-agnostic architecture.</strong> Write your app logic once. Switch between OpenAI, Anthropic, or a local Hugging Face model in one line — no refactoring needed.</li>
+              <li><strong>Industry-standard framework.</strong> LangChain appears constantly in AI engineering job descriptions. Knowing it demonstrates applied AI engineering sophistication beyond raw API calls.</li>
+              <li><strong>Built-in RAG pipeline.</strong> The "Q&amp;A over documents" tutorial walks you end-to-end through loading, splitting, embedding, storing, and retrieving — the most requested feature in modern AI apps.</li>
+            </ul>
           </div>
 
           <!-- Callout -->

@@ -91,26 +91,90 @@
       <div class="layout-constrain">
         <div class="article-stack">
 
-          <!-- What is this resource? -->
+          <!-- Overview -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">Overview</h3>
-            <p>The <a href="https://platform.openai.com/tokenizer" target="_blank">OpenAI Tokenizer</a> and <a href="https://github.com/openai/tiktoken" target="_blank">tiktoken library</a> are two closely related tools that address one of the most commonly misunderstood fundamentals of building with LLM APIs: token management. The <strong>OpenAI Tokenizer</strong> is an interactive web tool where you can paste any text and instantly see how the model breaks it into tokens — displayed with color-coded highlighting, a total token count, and the numerical token IDs. <strong>tiktoken</strong> is the programmatic equivalent: an open-source Python library from OpenAI that performs the same tokenization in code, letting you count tokens before every API call.</p>
-            <p>Understanding tokens is not optional for anyone building applications on top of LLM APIs. Every API provider charges by the token, enforces context window limits measured in tokens, and structures its responses around token usage. Without understanding what a token is and how your text maps to tokens, you cannot accurately predict costs, prevent context window overflow errors, or implement efficient conversation history management. These two tools — the visual tokenizer for building intuition and tiktoken for programmatic control — are the practical solution to those problems.</p>
+            <p class="devai-section-lead">The <a href="https://platform.openai.com/tokenizer" target="_blank">OpenAI Tokenizer</a> (interactive web tool) and <a href="https://github.com/openai/tiktoken" target="_blank">tiktoken library</a> (Python) solve the same problem: understanding and counting the tokens your app sends to an LLM API — so you can predict costs and prevent context overflow <em>before</em> they happen.</p>
+
+            <div class="devai-summary-grid">
+              <div class="devai-summary-card">
+                <span class="devai-summary-card__icon">🌐</span>
+                <p class="devai-summary-card__title">OpenAI Tokenizer</p>
+                <p class="devai-summary-card__text">Paste any text and see it split into color-coded tokens in real time — with total count and token IDs. Best for building intuition.</p>
+              </div>
+              <div class="devai-summary-card">
+                <span class="devai-summary-card__icon">🐍</span>
+                <p class="devai-summary-card__title">tiktoken Library</p>
+                <p class="devai-summary-card__text"><code>pip install tiktoken</code> — count tokens programmatically in your code before every API call. The production-grade solution.</p>
+              </div>
+              <div class="devai-summary-card">
+                <span class="devai-summary-card__icon">🆓</span>
+                <p class="devai-summary-card__title">Both Are Free</p>
+                <p class="devai-summary-card__text">The web tool needs no account. tiktoken is open-source (MIT license) with no usage costs.</p>
+              </div>
+            </div>
           </div>
 
           <!-- What's in it? -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">What's in it?</h3>
-            <p>A <strong>token</strong> is the basic unit that language models read and generate. It is not a word, a character, or a syllable — it is a chunk of text determined by the model's vocabulary, called an encoding. Common English words are often single tokens ("the" = 1 token, "cat" = 1 token), but less common words get split across multiple tokens ("tokenization" = 3 tokens: "token", "ization", might vary). Punctuation, numbers, and code are tokenized differently from prose, often at higher token counts per character. Non-English text is typically tokenized less efficiently — a sentence in Japanese or Arabic may use 2–5× as many tokens as the equivalent English sentence of the same semantic content.</p>
-            <p>The <strong>interactive Tokenizer tool</strong> at platform.openai.com/tokenizer lets you toggle between different encodings and see exactly how the same text tokenizes differently across models. There are two encodings you'll use in practice: <code>o200k_base</code> — used by all modern models including the entire GPT-5.4 family (gpt-5.4, gpt-5.4-mini, gpt-5.4-nano), GPT-5.3, as well as the older GPT-4o and GPT-4.1 models — and <code>cl100k_base</code>, used only by legacy models like GPT-4, GPT-3.5-turbo, and text-embedding-ada-002. If you're building anything in 2026, you're using <code>o200k_base</code>. The o200k encoding has a larger vocabulary (200k tokens vs 100k) and tokenizes non-English text, code, and whitespace more efficiently than its predecessor.</p>
-            <p>The <strong>tiktoken library</strong> on GitHub is the programmatic equivalent. After <code>pip install tiktoken</code>, you load an encoding by name, call <code>encode()</code> on any string, and get back a list of integer token IDs. The length of that list is the token count. You can also use <code>tiktoken.encoding_for_model("gpt-4.1")</code> to automatically get the right encoding for a specific model — tiktoken maps model names to their encoding internally. The README explains the API and includes ready-made examples for the most common use cases: counting tokens in a plain string, counting tokens in a full chat conversation (which includes overhead tokens the message format adds), and truncating text to fit within a budget.</p>
+            <p class="devai-section-lead">A <strong>token</strong> is not a word — it's a chunk of text determined by the model's vocabulary. Here's what you need to know:</p>
+
+            <ul class="devai-icon-list">
+              <li>
+                <span class="devai-icon-list__icon">📏</span>
+                <div class="devai-icon-list__body">
+                  <strong>Token ≈ ¾ of an English word</strong>
+                  <span>Common words like "the" or "cat" = 1 token each. Less common words split: "tokenization" = 3 tokens. Code and numbers are often tokenized at higher counts per character.</span>
+                </div>
+              </li>
+              <li>
+                <span class="devai-icon-list__icon">🌍</span>
+                <div class="devai-icon-list__body">
+                  <strong>Non-English text costs more</strong>
+                  <span>A Japanese or Arabic sentence may use 2–5× as many tokens as the equivalent English sentence. If your app is multilingual, budget accordingly.</span>
+                </div>
+              </li>
+              <li>
+                <span class="devai-icon-list__icon">🔑</span>
+                <div class="devai-icon-list__body">
+                  <strong>Two encodings in practice</strong>
+                  <span><code>o200k_base</code> — all current models (GPT-5.4 family, GPT-4o, GPT-4.1). <code>cl100k_base</code> — legacy only (GPT-4, GPT-3.5-turbo, ada-002). When in doubt: call <code>tiktoken.encoding_for_model(model_name)</code>.</span>
+                </div>
+              </li>
+              <li>
+                <span class="devai-icon-list__icon">📚</span>
+                <div class="devai-icon-list__body">
+                  <strong>Conversation overhead</strong>
+                  <span>Chat format adds ~3 tokens of overhead <em>per message</em>, plus 3 tokens to prime each reply. The tiktoken README includes a ready-made <code>num_tokens_from_messages()</code> function that handles this correctly.</span>
+                </div>
+              </li>
+            </ul>
+
+            <div class="devai-table-wrap" style="margin-top:18px">
+              <table class="devai-table">
+                <thead>
+                  <tr><th>Encoding</th><th>Vocabulary size</th><th>Use with</th><th>Status</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="devai-table__highlight"><td><code>o200k_base</code></td><td>200,000 tokens</td><td>GPT-5.4, GPT-4o, GPT-4.1 and newer</td><td><span class="devai-badge devai-badge--green">Current</span></td></tr>
+                  <tr><td><code>cl100k_base</code></td><td>100,000 tokens</td><td>GPT-4, GPT-3.5-turbo, ada-002</td><td><span class="devai-badge devai-badge--muted">Legacy</span></td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
 
-          <!-- How is it relevant? -->
+          <!-- Relevance -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">Relevance to Your Audience</h3>
-            <p>Token management is the first thing that surprises developers who are new to building with LLM APIs. Most people intuitively expect to be charged per message or per word, but APIs charge by token, and the token count for a single request includes far more than just the user's most recent input. It includes the entire conversation history, the system prompt, and the model's response. In a chatbot with 20 back-and-forth turns, by the 20th turn you might be sending 5,000+ tokens per request even if each individual message is short — because all 19 previous turns are re-sent as context.</p>
-            <p>Without a token counter, this accumulation is invisible until you see an unexpectedly high API bill or — worse — get a <code>context_length_exceeded</code> error at runtime because the conversation grew longer than the model's context window allows. Tiktoken gives you the ability to check token counts before every API call, implement a sliding window that trims the oldest messages when the count gets too high, and log token usage per request so you can profile and optimize your application. For a developer building any kind of conversational AI feature, these aren't optional optimizations — they're architectural necessities.</p>
+            <p class="devai-section-lead">Token management is the first thing that surprises new LLM developers — and the first thing that causes unexpected API bills. Here's why it matters for your project:</p>
+
+            <ul class="devai-check-list">
+              <li><strong>Every turn of a chatbot resends the full history.</strong> By turn 20, you may be sending 5,000+ tokens per request even if each message is short. Without a counter, this is invisible until the bill arrives.</li>
+              <li><strong>Context overflow crashes your app.</strong> A <code>context_length_exceeded</code> error at runtime is worse than a high bill — it breaks user sessions. Counting tokens <em>before</em> the call lets you trim old messages proactively.</li>
+              <li><strong>Token math changes your architecture.</strong> Knowing your system prompt is 650 tokens lets you calculate exactly how many turns fit in a 128K context window before you deploy.</li>
+              <li><strong>Prompt caching savings are measurable.</strong> Use tiktoken to calculate what percentage of your daily token usage comes from repeated system prompt content — then decide if caching is worth enabling.</li>
+            </ul>
           </div>
 
           <!-- Callout -->

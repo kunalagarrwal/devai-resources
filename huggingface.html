@@ -88,25 +88,108 @@
       <div class="layout-constrain">
         <div class="article-stack">
 
-          <!-- What is this resource? -->
+          <!-- Overview -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">Overview</h3>
-            <p><a href="https://huggingface.co" target="_blank">Hugging Face</a> is the largest open-source AI platform on the web, functioning simultaneously as a model repository, a dataset library, a community forum, and a hosting platform for live AI demos. As of 2025, it hosts over <strong>2 million pre-trained models</strong> contributed by research institutions, major technology companies (Meta, Google, Microsoft, Mistral, DeepSeek, Moonshot AI), and independent developers — all available for free download. In September 2025, Hugging Face integrated directly into <strong>GitHub Copilot</strong>, letting developers search and deploy Hub models without leaving VS Code. The platform also achieved <strong>SOC 2 Type II certification</strong> in 2025, making it enterprise-grade for organizations with compliance requirements.</p>
-            <p>What distinguishes Hugging Face from other AI resources in this guide is its scope: it covers the full breadth of AI tasks beyond just text generation. Models on the platform handle text, images, audio, video, code, protein sequences, and more. For a developer building a production application, Hugging Face is where you go to find the right specialized model for your specific task — whether that's multilingual text classification, speech recognition, document image analysis, or a domain-specific text generator trained on medical or legal data. The 2025 open-source model landscape has become extremely competitive: <strong>DeepSeek V3.1</strong>, <strong>Kimi K2</strong>, and <strong>GLM 4.5</strong> are all available on the Hub and benchmark near or above closed commercial models on many tasks.</p>
+            <p class="devai-section-lead"><a href="https://huggingface.co" target="_blank">Hugging Face</a> is the largest open-source AI platform on the web — simultaneously a model repository, dataset library, demo host, and inference API. Over 2 million models from Meta, Google, Mistral, DeepSeek, and independent developers are available for free download or serverless API access.</p>
+
+            <div class="devai-summary-grid">
+              <div class="devai-summary-card">
+                <span class="devai-summary-card__icon">🤖</span>
+                <p class="devai-summary-card__title">2M+ Models</p>
+                <p class="devai-summary-card__text">Text, images, audio, code, and more — filterable by task, license, and framework.</p>
+              </div>
+              <div class="devai-summary-card">
+                <span class="devai-summary-card__icon">🔗</span>
+                <p class="devai-summary-card__title">GitHub Copilot Integration</p>
+                <p class="devai-summary-card__text">Search and deploy Hub models directly from VS Code (added Sept 2025).</p>
+              </div>
+              <div class="devai-summary-card">
+                <span class="devai-summary-card__icon">🏢</span>
+                <p class="devai-summary-card__title">SOC 2 Certified</p>
+                <p class="devai-summary-card__text">Enterprise-grade compliance certification achieved in 2025.</p>
+              </div>
+              <div class="devai-summary-card">
+                <span class="devai-summary-card__icon">🆓</span>
+                <p class="devai-summary-card__title">Free to Start</p>
+                <p class="devai-summary-card__text">All model downloads are free. Paid tiers unlock GPU compute and private repos.</p>
+              </div>
+            </div>
           </div>
 
           <!-- What's in it? -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">What's in it?</h3>
-            <p>The platform has five main components that developers interact with. The <strong>Model Hub</strong> is a searchable library of 2M+ pre-trained models filterable by task, programming language, license type, and dataset. Each model has a dedicated <em>model card</em> — a structured documentation page explaining what the model was trained on, its intended use cases, known limitations, and example code showing how to load and run it. Reading the model card before downloading anything is critical: it tells you whether the model actually does what you need, under what license, and with what computational requirements.</p>
-            <p>The <strong>Datasets Hub</strong> provides access to hundreds of thousands of publicly available training and evaluation datasets in a standardized format. The <strong>Spaces</strong> section hosts live interactive demos built with Gradio or Streamlit — the fastest way to test a model's behavior before committing to integration. The <strong>Transformers library</strong> (<code>pip install transformers</code>) is Hugging Face's flagship Python library, providing a unified <code>pipeline()</code> interface. For serverless model calls, the <strong>Inference Providers API</strong> (updated 2025) connects the Hub to 10+ cloud providers including AWS, Azure, Google Cloud, Together AI, and Replicate — same HTTP interface as OpenAI, different backend. You pick the cheapest provider for your model with one parameter change. For production deployment, <strong>Text Generation Inference (TGI)</strong> and <strong>vLLM</strong> are the standard serving stacks, both supported natively on the Hub.</p>
+            <p class="devai-section-lead">Five components make up the Hugging Face developer experience:</p>
+
+            <ul class="devai-icon-list">
+              <li>
+                <span class="devai-icon-list__icon">🗂️</span>
+                <div class="devai-icon-list__body">
+                  <strong>Model Hub</strong>
+                  <span>2M+ models searchable by task, language, license, and dataset. Every model has a <em>model card</em> — always read it before downloading: it shows training data, limitations, compute requirements, and license.</span>
+                </div>
+              </li>
+              <li>
+                <span class="devai-icon-list__icon">🧪</span>
+                <div class="devai-icon-list__body">
+                  <strong>Spaces (Live Demos)</strong>
+                  <span>Interactive Gradio or Streamlit demos — the fastest way to test a model's real behavior before committing to integration. Try before you download.</span>
+                </div>
+              </li>
+              <li>
+                <span class="devai-icon-list__icon">🐍</span>
+                <div class="devai-icon-list__body">
+                  <strong>Transformers Library</strong>
+                  <span><code>pip install transformers</code>. The flagship Python library — two lines of code get a working model running locally via the unified <code>pipeline()</code> interface.</span>
+                </div>
+              </li>
+              <li>
+                <span class="devai-icon-list__icon">☁️</span>
+                <div class="devai-icon-list__body">
+                  <strong>Inference Providers API (2025)</strong>
+                  <span>Serverless HTTP API routing to 10+ cloud backends (AWS, Azure, Together AI, Replicate). Same interface as OpenAI — one parameter change picks a different provider.</span>
+                </div>
+              </li>
+              <li>
+                <span class="devai-icon-list__icon">📊</span>
+                <div class="devai-icon-list__body">
+                  <strong>Datasets Hub</strong>
+                  <span>Hundreds of thousands of public training and evaluation datasets in a standardized format — essential for fine-tuning or benchmarking your own models.</span>
+                </div>
+              </li>
+            </ul>
           </div>
 
-          <!-- How is it relevant? -->
+          <!-- Relevance -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">Relevance to Your Audience</h3>
-            <p>There are three reasons Hugging Face matters specifically for developers integrating AI into applications. First, <strong>cost</strong>: downloading a model and running it locally means no per-call API fees. For a prototype or a low-traffic application, running a smaller open-source model locally can reduce operating costs to near zero. For high-volume production use, self-hosting on a cloud GPU instance is still typically cheaper than commercial API pricing at scale. Second, <strong>specialization</strong>: the commercial API providers offer generalist models. Hugging Face gives you access to thousands of task-specific models — for example, a sentiment analysis model fine-tuned on product reviews, or a named entity recognition model trained on clinical text — that often outperform general-purpose models on their target domain.</p>
-            <p>Third, <strong>professional relevance</strong>: the Transformers library is one of the most widely used tools in applied machine learning. Knowing how to use it, navigate model cards, load models, and call the Inference API are genuine industry skills that appear in job descriptions for ML engineering and AI product development roles. Building familiarity with the Hugging Face ecosystem early gives you practical experience with the open-source AI tooling that underpins a large portion of the industry.</p>
+            <p class="devai-section-lead">Three reasons Hugging Face specifically matters for developers building AI applications:</p>
+
+            <div class="devai-table-wrap">
+              <table class="devai-table">
+                <thead>
+                  <tr><th>Reason</th><th>The situation</th><th>How HF helps</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>💰 Cost</strong></td>
+                    <td>Commercial APIs charge per token. A high-traffic app can cost hundreds/day.</td>
+                    <td>Download a model once, run locally — no per-call fees. Self-hosting on a GPU instance is often cheaper at scale.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>🎯 Specialization</strong></td>
+                    <td>GPT and Claude are generalists. Your task (clinical NER, code review, audio transcription) may have a better purpose-built model.</td>
+                    <td>Thousands of fine-tuned models for specific domains. Benchmark scores on the Open LLM Leaderboard let you compare before downloading.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>💼 Career relevance</strong></td>
+                    <td>ML engineering roles explicitly list Transformers experience.</td>
+                    <td>The Transformers library is the industry standard tool — using it builds genuine, marketable skills.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
 
           <!-- Callout -->

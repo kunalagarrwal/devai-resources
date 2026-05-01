@@ -88,26 +88,83 @@
       <div class="layout-constrain">
         <div class="article-stack">
 
-          <!-- What is this resource? -->
+          <!-- Overview -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">Overview</h3>
-            <p>The <a href="https://platform.openai.com/docs" target="_blank">OpenAI Platform Documentation</a> is the official, comprehensive technical reference maintained by OpenAI for developers building AI-powered applications. It covers the complete lifecycle of working with OpenAI's API — from generating your first API key and making your first request, all the way to deploying production-grade features using their most advanced models. As of 2026, the flagship model family is <strong>GPT-5.4</strong> (released March 2026), which comes in four tiers: GPT-5.4 ($2.50/$15 per 1M input/output tokens), GPT-5.4 mini ($0.75/$4.50), GPT-5.4 nano ($0.20/$1.25), and GPT-5.4 Pro ($30/$180 for maximum capability). All tiers support a <strong>1.05M-token context window</strong> and benefit from 50% cached input discounts. For complex reasoning tasks, OpenAI also offers reasoning-focused models that internally chain their thinking before responding. If you are integrating AI into any kind of software project, this documentation is the single most important reference you will return to repeatedly.</p>
-            <p>What makes this documentation particularly valuable is that it is written specifically for developers, not end users. It assumes you know how to write code and focuses on the mechanics of the API: how requests are structured, what parameters control model behavior, how responses are formatted, and how to handle errors. It is precise, well-organized, and regularly updated to reflect new models and features as OpenAI releases them. OpenAI introduced the <strong>Responses API</strong> as a successor to Chat Completions for agentic workflows — it natively supports web search, file reading, and computer use tools without external orchestration.</p>
+            <p class="devai-section-lead">The <a href="https://platform.openai.com/docs" target="_blank">OpenAI Platform Documentation</a> is the official technical reference for developers building with OpenAI's API — covering everything from your first API key to production-grade agentic features. If you're integrating AI into any project, this is the most important reference you'll return to repeatedly.</p>
+
+            <div class="devai-table-wrap">
+              <table class="devai-table">
+                <thead>
+                  <tr><th>Model</th><th>Input / 1M tokens</th><th>Output / 1M tokens</th><th>Context</th><th>Best for</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>GPT-5.4 nano</td><td>$0.20</td><td>$1.25</td><td>1.05M</td><td>High-volume, simple tasks</td></tr>
+                  <tr class="devai-table__highlight"><td>GPT-5.4 mini <span class="devai-badge">recommended</span></td><td>$0.75</td><td>$4.50</td><td>1.05M</td><td>Most general-purpose apps</td></tr>
+                  <tr><td>GPT-5.4</td><td>$2.50</td><td>$15.00</td><td>1.05M</td><td>Production-quality features</td></tr>
+                  <tr><td>GPT-5.4 Pro</td><td>$30.00</td><td>$180.00</td><td>1.05M</td><td>Maximum capability tasks</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p style="font-size:12px;color:var(--devai-muted);margin:6px 0 0">All tiers: 50% discount on cached input tokens · Pricing as of 2026</p>
           </div>
 
           <!-- What's in it? -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">What's in it?</h3>
-            <p>The documentation is organized around OpenAI's core API endpoints. The <strong>Chat Completions</strong> guide — the most critical section for most developers — explains how to structure the <code>messages</code> array, which holds the entire conversation history sent with every API call. Each message has a <code>role</code> (system, user, or assistant) and <code>content</code>, and understanding how this structure works is fundamental to building any chatbot or conversational feature. The guide explains how parameters like <code>temperature</code> (0 to 2, controlling randomness), <code>max_tokens</code> (limiting response length), and <code>top_p</code> affect model outputs. GPT-5.4 supports a <strong>1.05-million-token context window</strong> — enough to fit an entire codebase or book-length document in a single request.</p>
-            <p>The <strong>Tool Use</strong> section (previously "function calling") lets you define functions and give the model the ability to call them by returning structured JSON. For example, you could define a <code>get_weather(city)</code> function, and when a user asks "what's the weather in New York?", the model responds with a structured call your app executes. <strong>Structured Outputs</strong> — fully supported across the GPT-5.4 family — go further: by passing a JSON Schema as <code>response_format</code>, the model is guaranteed to return valid JSON matching your exact schema — no parsing failures, no hallucinated field names. This is now the recommended approach for any structured data extraction task.</p>
-            <p>Other essential sections include the <strong>Responses API</strong> (OpenAI's new agentic endpoint with built-in web search, file reading, and code interpreter tools — no LangChain required for simple agent tasks), the <strong>Embeddings</strong> guide (converting text into vectors for search), the <strong>Models</strong> overview comparing all current models and pricing, and the <strong>Batch API</strong> reference, which lets you process large volumes of requests asynchronously at a 50% cost discount — ideal for data pipelines and bulk classification tasks.</p>
+            <p class="devai-section-lead">The docs are organized around OpenAI's core API endpoints. Here's what matters most for building an AI-powered application:</p>
+
+            <ul class="devai-icon-list">
+              <li>
+                <span class="devai-icon-list__icon">💬</span>
+                <div class="devai-icon-list__body">
+                  <strong>Chat Completions</strong>
+                  <span>The core endpoint. Explains the <code>messages[]</code> array (system/user/assistant roles), and parameters like <code>temperature</code> (0–2 randomness) and <code>max_tokens</code>. Fundamental to every chatbot or AI feature.</span>
+                </div>
+              </li>
+              <li>
+                <span class="devai-icon-list__icon">🔧</span>
+                <div class="devai-icon-list__body">
+                  <strong>Tool Use (Function Calling)</strong>
+                  <span>Define functions your app exposes, and the model will call them by returning structured JSON. E.g., define <code>get_weather(city)</code> and the model calls it when users ask about weather.</span>
+                </div>
+              </li>
+              <li>
+                <span class="devai-icon-list__icon">📋</span>
+                <div class="devai-icon-list__body">
+                  <strong>Structured Outputs</strong>
+                  <span>Pass a JSON Schema as <code>response_format</code> and GPT-5.4 is <em>guaranteed</em> to return valid JSON matching your schema — no parse failures, no hallucinated fields.</span>
+                </div>
+              </li>
+              <li>
+                <span class="devai-icon-list__icon">🤖</span>
+                <div class="devai-icon-list__body">
+                  <strong>Responses API</strong>
+                  <span>OpenAI's new agentic endpoint with built-in web search, file reading, and code interpreter — no external orchestration needed for simple agent tasks.</span>
+                </div>
+              </li>
+              <li>
+                <span class="devai-icon-list__icon">🔢</span>
+                <div class="devai-icon-list__body">
+                  <strong>Embeddings + Batch API</strong>
+                  <span>Embeddings convert text to vectors for semantic search. The Batch API processes large request volumes asynchronously at a 50% cost discount — ideal for data pipelines.</span>
+                </div>
+              </li>
+            </ul>
           </div>
 
-          <!-- How is it relevant? -->
+          <!-- Relevance -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">Relevance to Your Audience</h3>
-            <p>If you are building any kind of AI-powered feature — a chatbot, an intelligent search tool, a code assistant, or a document summarizer — you will almost certainly use the OpenAI API as your starting point. This documentation is where you will find everything you need to make it work correctly and efficiently. For a developer building something like a study app with AI-generated flashcards, a customer support bot, or a writing assistant, the Chat Completions endpoint is the core building block and this documentation explains it better than any third-party tutorial. The GPT-5.4 family gives you a clear tiered choice: use <strong>nano</strong> for high-volume simple tasks ($0.20/1M tokens), <strong>mini</strong> for general use ($0.75/1M), <strong>GPT-5.4</strong> for production-quality work ($2.50/1M), and <strong>GPT-5.4 Pro</strong> for maximum capability on the hardest tasks ($30/1M).</p>
-            <p>Understanding the API mechanics covered here has real financial stakes: every API call costs money based on token count, and a badly structured application can easily burn through a monthly budget in a day. The docs explain exactly how tokens are counted, how conversation history accumulates costs across turns, and what strategies (like truncating old messages, using the Batch API for async work at 50% off, or enabling prompt caching) prevent runaway spending. <strong>Cached input tokens on GPT-5.4 are discounted by 50%</strong> — if your app sends the same large system prompt or document on every request, this alone can cut API costs dramatically. For a developer moving from prototype to real users, this knowledge is not optional — it directly affects whether your application is economically viable.</p>
+            <p class="devai-section-lead">Building a chatbot, study-aid, support bot, or writing assistant? OpenAI's Chat Completions endpoint is your core building block — and these docs explain it better than any third-party tutorial.</p>
+
+            <ul class="devai-check-list">
+              <li><strong>Financial stakes are real:</strong> Token costs accumulate fast. The docs explain how conversation history grows across turns and how to trim it before costs spiral.</li>
+              <li><strong>Prompt caching saves money immediately:</strong> Cached input tokens are discounted 50% — if your app sends the same system prompt on every request, enabling caching can cut input costs in half from day one.</li>
+              <li><strong>Tier selection matters:</strong> Start with <strong>mini</strong> ($0.75/1M) for most features. Only upgrade to full GPT-5.4 ($2.50/1M) when output quality genuinely demands it. Most CRUD-style AI features never need to.</li>
+              <li><strong>Error handling is documented:</strong> The Error Codes reference lists every status code the API can return (400, 401, 429, 500) with exact recovery guidance — essential for production deployments.</li>
+              <li><strong>Model selection is a decision, not a default:</strong> The Models overview compares all tiers on capability, speed, and pricing so you can make an informed choice before you write a single line of code.</li>
+            </ul>
           </div>
 
           <!-- Callout -->

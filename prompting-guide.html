@@ -88,26 +88,117 @@
       <div class="layout-constrain">
         <div class="article-stack">
 
-          <!-- What is this resource? -->
+          <!-- Overview -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">Overview</h3>
-            <p>The <a href="https://www.promptingguide.ai" target="_blank">Prompt Engineering Guide</a> (promptingguide.ai) is a comprehensive, community-maintained reference covering techniques for writing effective prompts for large language models. It covers a wide spectrum — from the most basic principles of how to phrase instructions clearly, to advanced research-level techniques used in production AI systems and academic papers. What distinguishes this resource from the official documentation provided by OpenAI or Anthropic is its focus: while the official API docs explain <em>how to call</em> the model, this guide explains <em>how to communicate</em> with it effectively once it's working. It's one of the most thoroughly organized free resources on prompt engineering available.</p>
-            <p>Prompt engineering is the practice of designing inputs to a language model to reliably produce the outputs your application needs. It is not about magic phrases or hacks — it is a systematic discipline with documented techniques, each with specific use cases, tradeoffs, and limitations. As AI becomes integrated into more software products, the ability to write system prompts that produce consistent, well-structured, reliable outputs is becoming a core engineering skill alongside database design or API integration.</p>
+            <p class="devai-section-lead">The <a href="https://www.promptingguide.ai" target="_blank">Prompt Engineering Guide</a> is a free, community-maintained reference covering techniques for writing prompts that produce reliable, well-structured outputs from LLMs. Unlike the API docs (which explain <em>how to call</em> a model), this guide explains <em>how to communicate</em> with it effectively — start here before you touch any API.</p>
+
+            <p style="font-size:14px;font-weight:600;margin:18px 0 10px;color:var(--devai-text)">Every prompt has four components — missing any one causes failures:</p>
+            <div class="devai-summary-grid">
+              <div class="devai-summary-card">
+                <span class="devai-summary-card__icon">📌</span>
+                <p class="devai-summary-card__title">Instruction</p>
+                <p class="devai-summary-card__text">What you want the model to do. Be specific — vague instructions produce vague outputs.</p>
+              </div>
+              <div class="devai-summary-card">
+                <span class="devai-summary-card__icon">🗂️</span>
+                <p class="devai-summary-card__title">Context</p>
+                <p class="devai-summary-card__text">Background the model needs to answer correctly — user role, app purpose, constraints.</p>
+              </div>
+              <div class="devai-summary-card">
+                <span class="devai-summary-card__icon">📄</span>
+                <p class="devai-summary-card__title">Input Data</p>
+                <p class="devai-summary-card__text">The actual content to process — the user's message, the document, the review text.</p>
+              </div>
+              <div class="devai-summary-card">
+                <span class="devai-summary-card__icon">📐</span>
+                <p class="devai-summary-card__title">Output Format</p>
+                <p class="devai-summary-card__text">How you want the response structured — JSON, markdown, a numbered list, a single word.</p>
+              </div>
+            </div>
           </div>
 
           <!-- What's in it? -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">What's in it?</h3>
-            <p>The guide is organized as a progressive curriculum from fundamentals to advanced techniques. The introductory sections establish the basic anatomy of a prompt: <strong>instruction</strong> (what you want the model to do), <strong>context</strong> (background information that helps the model), <strong>input data</strong> (the actual content to process), and <strong>output format</strong> (how you want the response structured). Many poorly-written prompts fail simply because they're missing one or more of these elements.</p>
-            <p>The technique sections cover the three most practically important methods for application developers. <strong>Zero-shot prompting</strong> is giving the model a task with no examples, relying entirely on its training to understand the request — useful for general-purpose instructions. <strong>Few-shot prompting</strong> is providing 2–5 examples of the desired input-output format before the actual task — this is the single most effective technique for getting structured, consistent outputs like JSON, formatted reports, or specific classifications. <strong>Chain-of-thought (CoT) prompting</strong> asks the model to show its reasoning step by step before giving a final answer, which dramatically improves accuracy on tasks involving math, logic, or multi-step reasoning. <em>Important 2025 caveat:</em> CoT prompting behaves differently on <strong>reasoning models</strong> (OpenAI o3/o4-mini, Claude with Extended Thinking enabled) — these models already perform extended internal reasoning before answering. Adding "think step by step" to prompts for these models is redundant or counterproductive; instead, focus your prompt on clearly specifying the problem and desired output format.</p>
-            <p>The advanced sections cover techniques like <strong>self-consistency</strong> (generating multiple reasoning paths and taking the most common answer — still highly effective for non-reasoning models), <strong>tree-of-thoughts</strong> (branching reasoning trees for complex problems), and <strong>ReAct</strong> (combining reasoning with tool-use in agentic workflows). The guide also covers <strong>Structured Outputs</strong> — a 2025 development where model providers (OpenAI, Anthropic) guarantee JSON schema compliance, reducing the need for complex output-parsing prompts. When Structured Outputs are available, you rely on the schema enforcement rather than few-shot examples to control format.</p>
+            <p class="devai-section-lead">The guide is a progressive curriculum from fundamentals to advanced techniques. Here's what you'll actually use when building an app:</p>
+
+            <div class="devai-table-wrap">
+              <table class="devai-table">
+                <thead>
+                  <tr><th>Technique</th><th>How it works</th><th>Best for</th><th>2026 note</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Zero-shot</strong></td>
+                    <td>Give the task with no examples — rely on the model's training.</td>
+                    <td>General instructions, simple classifications</td>
+                    <td>Works well on capable models (GPT-5.4, Sonnet 4.6)</td>
+                  </tr>
+                  <tr class="devai-table__highlight">
+                    <td><strong>Few-shot</strong> <span class="devai-badge">highest impact</span></td>
+                    <td>Provide 2–5 input → output examples before the actual task.</td>
+                    <td>Structured outputs (JSON, tables), consistent formatting</td>
+                    <td>Still the single most effective technique for format control</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Chain-of-thought (CoT)</strong></td>
+                    <td>Add "Think step by step" — model reasons out loud before answering.</td>
+                    <td>Math, logic, multi-step analysis</td>
+                    <td><em>Skip on reasoning models</em> (o3, Claude Extended Thinking) — they already do this internally</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Self-consistency</strong></td>
+                    <td>Generate multiple answers, take the majority vote.</td>
+                    <td>Hard reasoning where one pass isn't reliable</td>
+                    <td>Effective on non-reasoning models; less needed on o3/o4-mini</td>
+                  </tr>
+                  <tr>
+                    <td><strong>ReAct</strong></td>
+                    <td>Interleave reasoning steps with tool-use actions.</td>
+                    <td>Agentic workflows (search, code, APIs)</td>
+                    <td>Core pattern behind LangGraph and OpenAI Responses API agents</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
 
-          <!-- How is it relevant? -->
+          <!-- Relevance -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">Relevance to Your Audience</h3>
-            <p>Getting the API technically working is only half the challenge when building an AI-powered application. The other half is getting the model to produce outputs that are consistently useful, correctly formatted, and appropriately scoped. Poorly written prompts lead to outputs that are unpredictable, verbose, off-topic, or in the wrong format — and these failures manifest as application bugs that are hard to diagnose precisely because the model's behavior is not deterministic.</p>
-            <p>Consider a concrete example: you're building a feature that extracts action items from a meeting transcript and returns them as a JSON array. Without proper prompt engineering, the model might return plain text bullet points, include unnecessary explanation, or add items that weren't mentioned. Adding a few-shot example to your system prompt — showing the model exactly what input maps to what JSON output — often eliminates all three problems immediately. In 2026, you can also use <strong>Structured Outputs</strong> (supported across the GPT-5.4 family) to guarantee schema-compliant JSON, which complements but doesn't fully replace good prompt engineering — you still need clear instructions, good context, and the right tone for your use case. The Prompt Engineering Guide gives you the vocabulary and the specific techniques to handle these situations systematically rather than by trial and error. For any developer building AI features that need to produce structured, reliable output, this guide is essential reading.</p>
+            <p class="devai-section-lead">Getting the API to <em>work</em> is only half the challenge. Getting it to produce <em>reliable, correctly formatted output</em> is the other half — and that's entirely a prompting problem.</p>
+
+            <ul class="devai-icon-list">
+              <li>
+                <span class="devai-icon-list__icon">🐛</span>
+                <div class="devai-icon-list__body">
+                  <strong>Prompt failures look like bugs</strong>
+                  <span>If your JSON extractor sometimes returns plain text, or your classifier sometimes adds unprompted explanation — that's a prompt structure issue, not a model capability issue. This guide gives you the vocabulary to diagnose it.</span>
+                </div>
+              </li>
+              <li>
+                <span class="devai-icon-list__icon">✨</span>
+                <div class="devai-icon-list__body">
+                  <strong>Few-shot examples fix most inconsistency</strong>
+                  <span>Adding 2–3 input/output examples to your system prompt is often the difference between a flaky feature and a reliable one. Try it before anything else when your output isn't consistent.</span>
+                </div>
+              </li>
+              <li>
+                <span class="devai-icon-list__icon">🧮</span>
+                <div class="devai-icon-list__body">
+                  <strong>Know which model type you're prompting</strong>
+                  <span>Standard models (GPT-5.4, Claude Sonnet) benefit from CoT. Reasoning models (o3, o4-mini, Claude with Extended Thinking) already think internally — adding CoT hurts more than it helps. Specify the output format instead.</span>
+                </div>
+              </li>
+              <li>
+                <span class="devai-icon-list__icon">🔄</span>
+                <div class="devai-icon-list__body">
+                  <strong>Return to this guide when a feature breaks</strong>
+                  <span>Whenever something doesn't work right, the root cause is almost always the prompt. This guide helps you identify whether you're missing context, need examples, or need a tighter output specification.</span>
+                </div>
+              </li>
+            </ul>
           </div>
 
           <!-- Callout -->
