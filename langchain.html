@@ -21,6 +21,7 @@
           <li><a href="huggingface.html" class="devai-nav__link">Hugging Face</a></li>
           <li><a href="tokenizer.html" class="devai-nav__link">Tokenizer</a></li>
           <li><a href="langchain.html" class="devai-nav__link is-current">LangChain</a></li>
+          <li><a href="reflection.html" class="devai-nav__link">Reflection</a></li>
         </ul>
         <div class="devai-search" id="devaiSearch">
           <button class="devai-search__btn" id="devaiSearchToggle" aria-label="Search" aria-expanded="false">
@@ -87,6 +88,30 @@
     <section class="band band--tint">
       <div class="layout-constrain">
         <div class="article-stack">
+
+          <div class="feature-panel assignment-abstract">
+            <h2 class="feature-panel__title">Resource Abstract</h2>
+
+            <h3 class="feature-panel__title">What is this?</h3>
+            <p><a href="https://docs.langchain.com/oss/python/langchain/overview" target="_blank">LangChain Documentation</a> explains the open-source framework for building LLM-powered applications and agents. It is designed for developers who have moved beyond a single API call and now need model integrations, tool calling, retrieval, memory, tracing, and more structured application logic.</p>
+
+            <h3 class="feature-panel__title">What is in it?</h3>
+            <p>The current docs focus on LangChain v1, including installation, quickstarts, <code>create_agent</code>, model integrations, tools, middleware, structured output, retrieval, long-term memory, human-in-the-loop workflows, guardrails, runtime context, and deployment with LangSmith. They also explain the relationship between LangChain and LangGraph: LangChain gives developers a higher-level way to build agents, while LangGraph supplies the lower-level orchestration layer for durable execution, streaming, persistence, and stateful workflows. LangSmith documentation adds tracing, debugging, evaluation, and observability for production systems.</p>
+
+            <h3 class="feature-panel__title">Why is it relevant to this audience?</h3>
+            <p>For CS students and application developers, LangChain becomes useful after the basics are working. A direct OpenAI or Anthropic call is best for learning, but real applications often need to call tools, retrieve documents, switch providers, validate outputs, and inspect what happened when an answer was wrong. LangChain gives those patterns names and reusable components. It is especially relevant for retrieval-augmented generation, support bots, research assistants, multi-step workflows, and portfolio projects that need to show more than a simple wrapper around a chatbot API.</p>
+            <p>The documentation also helps readers decide when a framework is worth the added complexity. LangChain can save time when an app needs repeated patterns, but it can be unnecessary for a single prompt-response endpoint. That distinction is important for this audience because students often overbuild early projects. Reading the docs with a specific feature in mind - such as "chat with uploaded notes" or "agent that calls a weather tool" - keeps the framework practical.</p>
+
+            <h3 class="feature-panel__title">Tips for efficient use</h3>
+            <ul class="devai-check-list">
+              <li>Learn one direct provider API first; LangChain is easier when you already understand prompts, messages, and tokens.</li>
+              <li>Start with the Quickstart and a small <code>create_agent</code> example before reading advanced orchestration pages.</li>
+              <li>Use LangChain for provider switching, tools, retrieval, and observability rather than for every tiny API call.</li>
+              <li>Move to LangGraph when you need explicit control over state, loops, retries, or human approval steps.</li>
+              <li>Enable LangSmith tracing early so you can inspect prompts, tool calls, latency, and failures while developing.</li>
+              <li>Version-pin dependencies in serious projects, because agent frameworks evolve quickly and examples may change between releases or language runtimes over a semester project or final portfolio build timeline.</li>
+            </ul>
+          </div>
 
           <!-- Overview -->
           <div class="feature-panel">

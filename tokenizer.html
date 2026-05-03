@@ -21,6 +21,7 @@
           <li><a href="huggingface.html" class="devai-nav__link">Hugging Face</a></li>
           <li><a href="tokenizer.html" class="devai-nav__link is-current">Tokenizer</a></li>
           <li><a href="langchain.html" class="devai-nav__link">LangChain</a></li>
+          <li><a href="reflection.html" class="devai-nav__link">Reflection</a></li>
         </ul>
         <div class="devai-search" id="devaiSearch">
           <button class="devai-search__btn" id="devaiSearchToggle" aria-label="Search" aria-expanded="false">
@@ -75,7 +76,7 @@
             </div>
             <div class="devai-stat">
               <p class="devai-stat__value">o200k</p>
-              <p class="devai-stat__label">Encoding for GPT-5.4 family</p>
+              <p class="devai-stat__label">Encoding for current GPT models</p>
             </div>
             <div class="devai-stat">
               <p class="devai-stat__value">Free</p>
@@ -90,6 +91,30 @@
     <section class="band band--tint">
       <div class="layout-constrain">
         <div class="article-stack">
+
+          <div class="feature-panel assignment-abstract">
+            <h2 class="feature-panel__title">Resource Abstract</h2>
+
+            <h3 class="feature-panel__title">What is this?</h3>
+            <p>The <a href="https://platform.openai.com/tokenizer" target="_blank">OpenAI Tokenizer</a> and <a href="https://github.com/openai/tiktoken" target="_blank">tiktoken</a> are tools for understanding how text becomes tokens before it is processed by OpenAI models. The web tokenizer is interactive and visual; tiktoken is the Python library developers can install inside an application to count tokens programmatically.</p>
+
+            <h3 class="feature-panel__title">What is in it?</h3>
+            <p>The tokenizer lets users paste text and immediately see token boundaries, token IDs, character counts, and total token counts. OpenAI's help and tokenizer pages explain the common rule of thumb that one token is roughly four English characters, or about three-quarters of a word, though this varies by language, punctuation, code, and formatting. The tiktoken GitHub repository provides installation instructions, model-specific encoding helpers such as <code>encoding_for_model()</code>, examples for encodings like <code>o200k_base</code> and <code>cl100k_base</code>, and links to OpenAI Cookbook examples for counting tokens in strings and chat-style message lists.</p>
+
+            <h3 class="feature-panel__title">Why is it relevant to this audience?</h3>
+            <p>Token counting is one of the first hidden engineering problems new AI developers encounter. API cost, latency, context limits, and truncation behavior all depend on tokens, not visible words. A chatbot can become expensive because every request may include the system prompt and conversation history. A document Q&amp;A feature can fail if the input exceeds the model's context window. By learning tokenization early, students can design better prompts, trim older messages, budget usage per user, and decide when summarization or retrieval is needed.</p>
+            <p>This resource is especially useful because it turns an abstract billing concept into something visible. When a developer sees how a prompt, JSON schema, or code snippet splits into tokens, cost planning becomes concrete. It also supports better debugging: if an API response is cut off or a request fails for length, the developer can inspect token counts instead of guessing. That makes tokenizer use a practical quality-control step before deployment.</p>
+
+            <h3 class="feature-panel__title">Tips for efficient use</h3>
+            <ul class="devai-check-list">
+              <li>Paste a full system prompt plus a sample conversation into the web tokenizer before estimating cost.</li>
+              <li>Install tiktoken during development, not after deployment, and log token counts for representative requests.</li>
+              <li>Use <code>encoding_for_model()</code> instead of guessing an encoding manually.</li>
+              <li>Remember that non-English text, code, JSON, and long numbers may tokenize differently than plain English prose.</li>
+              <li>Build a trimming or summarization strategy before a conversation reaches the model's context limit.</li>
+              <li>Recheck counts whenever you change the system prompt, add examples, include tool schemas, switch models, or expand conversation memory for a larger feature or demo.</li>
+            </ul>
+          </div>
 
           <!-- Overview -->
           <div class="feature-panel">
@@ -139,7 +164,7 @@
                 <span class="devai-icon-list__icon">🔑</span>
                 <div class="devai-icon-list__body">
                   <strong>Two encodings in practice</strong>
-                  <span><code>o200k_base</code> — all current models (GPT-5.4 family, GPT-4o, GPT-4.1). <code>cl100k_base</code> — legacy only (GPT-4, GPT-3.5-turbo, ada-002). When in doubt: call <code>tiktoken.encoding_for_model(model_name)</code>.</span>
+                  <span><code>o200k_base</code> — current GPT models, including GPT-5.5, GPT-5.4 family, GPT-4o, and GPT-4.1. <code>cl100k_base</code> — older GPT-4, GPT-3.5-turbo, and ada-era models. When in doubt: call <code>tiktoken.encoding_for_model(model_name)</code>.</span>
                 </div>
               </li>
               <li>
@@ -157,7 +182,7 @@
                   <tr><th>Encoding</th><th>Vocabulary size</th><th>Use with</th><th>Status</th></tr>
                 </thead>
                 <tbody>
-                  <tr class="devai-table__highlight"><td><code>o200k_base</code></td><td>200,000 tokens</td><td>GPT-5.4, GPT-4o, GPT-4.1 and newer</td><td><span class="devai-badge devai-badge--green">Current</span></td></tr>
+                  <tr class="devai-table__highlight"><td><code>o200k_base</code></td><td>200,000 tokens</td><td>GPT-5.5, GPT-5.4, GPT-4o, GPT-4.1 and newer</td><td><span class="devai-badge devai-badge--green">Current</span></td></tr>
                   <tr><td><code>cl100k_base</code></td><td>100,000 tokens</td><td>GPT-4, GPT-3.5-turbo, ada-002</td><td><span class="devai-badge devai-badge--muted">Legacy</span></td></tr>
                 </tbody>
               </table>
@@ -189,7 +214,7 @@
             <ul>
               <li>Use the <strong>interactive tokenizer first</strong> — paste in your full system prompt plus a representative sample user conversation and look at the total. This one exercise gives you more practical intuition about token costs than reading any documentation.</li>
               <li>Install tiktoken at the start of any project: <code>pip install tiktoken</code>. Add a helper function that counts tokens before every API call and logs the result, even in development. You want this data from day one, not after you've already deployed.</li>
-              <li>Use <code>o200k_base</code> for all current OpenAI models (GPT-5.4, GPT-5.4-mini, GPT-5.4-nano, GPT-4o, and newer). Use <code>cl100k_base</code> only for legacy models (GPT-4, GPT-3.5-turbo, text-embedding-ada-002). When in doubt, call <code>tiktoken.encoding_for_model(your_model_name)</code> and let tiktoken pick automatically.</li>
+              <li>Use <code>o200k_base</code> for current OpenAI models such as GPT-5.5, GPT-5.4, GPT-4o, and newer. Use <code>cl100k_base</code> only for older GPT-4, GPT-3.5-turbo, and ada-era models. When in doubt, call <code>tiktoken.encoding_for_model(your_model_name)</code> and let tiktoken pick automatically.</li>
               <li>For chat conversations, the token count isn't just the sum of all message strings — the chat format itself adds a small overhead per message. The <strong>OpenAI Cookbook on GitHub</strong> has a ready-made function (<code>num_tokens_from_messages()</code>) that handles this correctly; use it rather than writing your own naive counter.</li>
               <li>Implement a <strong>message trimming strategy</strong> early. A common approach is to remove the oldest user/assistant turns until the count is under a safe threshold before each API call. Tiktoken makes it easy to check the count after each trim step.</li>
             </ul>

@@ -21,6 +21,7 @@
           <li><a href="huggingface.html" class="devai-nav__link">Hugging Face</a></li>
           <li><a href="tokenizer.html" class="devai-nav__link">Tokenizer</a></li>
           <li><a href="langchain.html" class="devai-nav__link">LangChain</a></li>
+          <li><a href="reflection.html" class="devai-nav__link">Reflection</a></li>
         </ul>
         <div class="devai-search" id="devaiSearch">
           <button class="devai-search__btn" id="devaiSearchToggle" aria-label="Search" aria-expanded="false">
@@ -88,6 +89,30 @@
       <div class="layout-constrain">
         <div class="article-stack">
 
+          <div class="feature-panel assignment-abstract">
+            <h2 class="feature-panel__title">Resource Abstract</h2>
+
+            <h3 class="feature-panel__title">What is this?</h3>
+            <p>The <a href="https://docs.anthropic.com" target="_blank">Anthropic API Documentation</a> is the official developer reference for Claude, Anthropic's family of AI models. It is useful for developers who want an OpenAI alternative, need strong long-context performance, or want to compare how different model providers structure API calls, prompts, tools, and pricing.</p>
+
+            <h3 class="feature-panel__title">What is in it?</h3>
+            <p>The docs include Claude's Quickstart, Messages API, model comparison tables, prompt engineering guidance, tool use, Files API, PDF support, prompt caching, token counting, batch processing, streaming, and deployment notes for Anthropic API, Amazon Bedrock, Google Vertex AI, and Microsoft Foundry. The current model overview highlights Claude Opus 4.7 for complex tasks, Claude Sonnet 4.6 as a strong speed-to-intelligence balance, and Claude Haiku 4.5 as the fastest current model. The resource also explains Claude-specific features such as the top-level <code>system</code> field, long context windows, extended or adaptive thinking options, and prompt caching.</p>
+
+            <h3 class="feature-panel__title">Why is it relevant to this audience?</h3>
+            <p>Students and app developers benefit from reading Anthropic's docs because comparing Claude with OpenAI teaches that "LLM API" is a pattern, not a single vendor. The Messages API is similar enough to OpenAI's structure to feel familiar, but different enough to reveal important design choices. Claude is especially relevant for applications that handle large documents, codebases, research files, policy manuals, or multi-step reasoning. The docs also help developers think about cost: prompt caching can matter when an app repeatedly sends the same instructions or source document, and model selection can keep a prototype affordable.</p>
+            <p>This resource is also useful for learning provider portability. If a developer understands both OpenAI and Anthropic request formats, they can design a backend that keeps prompts, model settings, and response validation separate from the rest of the app. That separation makes it easier to switch providers, compare quality, or offer a fallback model when one API is unavailable.</p>
+
+            <h3 class="feature-panel__title">Tips for efficient use</h3>
+            <ul class="devai-check-list">
+              <li>Begin with the Quickstart and Messages API, then compare the request shape with OpenAI's docs.</li>
+              <li>Use the Models overview before choosing Opus, Sonnet, or Haiku; faster models are often enough for classroom projects and prototypes.</li>
+              <li>Read prompt caching before building document-heavy features, because repeated context can dominate cost and latency.</li>
+              <li>Use the Claude Console to test prompts before embedding them in code.</li>
+              <li>Bookmark Tool Use and Token Counting once your app moves beyond simple chat responses.</li>
+              <li>For production code, pin exact model identifiers when stability matters, and use aliases only when you intentionally want automatic upgrades.</li>
+            </ul>
+          </div>
+
           <!-- Overview -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">Overview</h3>
@@ -105,7 +130,7 @@
                 </tbody>
               </table>
             </div>
-            <p style="font-size:12px;color:var(--devai-muted);margin:6px 0 0">All models support Extended Thinking · Up to 90% savings via Prompt Caching · Pricing as of April 2026</p>
+            <p style="font-size:12px;color:var(--devai-muted);margin:6px 0 0">Sonnet and Haiku support Extended Thinking; Opus uses Adaptive Thinking · Check Anthropic's pricing page before launch</p>
           </div>
 
           <!-- What's in it? -->

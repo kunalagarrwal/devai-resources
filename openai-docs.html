@@ -21,6 +21,7 @@
           <li><a href="huggingface.html" class="devai-nav__link">Hugging Face</a></li>
           <li><a href="tokenizer.html" class="devai-nav__link">Tokenizer</a></li>
           <li><a href="langchain.html" class="devai-nav__link">LangChain</a></li>
+          <li><a href="reflection.html" class="devai-nav__link">Reflection</a></li>
         </ul>
         <div class="devai-search" id="devaiSearch">
           <button class="devai-search__btn" id="devaiSearchToggle" aria-label="Search" aria-expanded="false">
@@ -63,16 +64,16 @@
           <p class="resource-lede__url">URL: <a href="https://platform.openai.com/docs" target="_blank">https://platform.openai.com/docs</a></p>
           <div class="devai-stats">
             <div class="devai-stat">
-              <p class="devai-stat__value">GPT-5.4</p>
-              <p class="devai-stat__label">Flagship model (Mar 2026)</p>
+              <p class="devai-stat__value">GPT-5.5</p>
+              <p class="devai-stat__label">Latest flagship model</p>
             </div>
             <div class="devai-stat">
-              <p class="devai-stat__value">1.05M</p>
+              <p class="devai-stat__value">1M</p>
               <p class="devai-stat__label">Context window (tokens)</p>
             </div>
             <div class="devai-stat">
-              <p class="devai-stat__value">$2.50</p>
-              <p class="devai-stat__label">Per 1M input tokens (GPT-5.4)</p>
+              <p class="devai-stat__value">$5.00</p>
+              <p class="devai-stat__label">Per 1M input tokens (GPT-5.5)</p>
             </div>
             <div class="devai-stat">
               <p class="devai-stat__value">REST</p>
@@ -88,6 +89,29 @@
       <div class="layout-constrain">
         <div class="article-stack">
 
+          <div class="feature-panel assignment-abstract">
+            <h2 class="feature-panel__title">Resource Abstract</h2>
+
+            <h3 class="feature-panel__title">What is this?</h3>
+            <p>The <a href="https://platform.openai.com/docs" target="_blank">OpenAI Platform Documentation</a> is the official developer guide for building applications with OpenAI models and APIs. For this guide's audience - CS students and developers adding AI features to their own apps - it is the main source for learning how to send requests, choose models, receive structured responses, and move from a playground experiment to production code.</p>
+
+            <h3 class="feature-panel__title">What is in it?</h3>
+            <p>The docs cover the OpenAI dashboard, client SDKs, model selection, the Responses API, Chat Completions, streaming, structured output, function calling, file search, web search, prompt caching, token counting, rate limits, and deployment guidance. The current model pages recommend <code>gpt-5.5</code> for complex reasoning and coding work, while lower-latency or lower-cost workloads can use smaller variants such as <code>gpt-5.4-mini</code> or <code>gpt-5.4-nano</code>. The most useful sections for a first AI integration are the Quickstart, Text Generation, Responses API, Structured Output, Function Calling, Models, and Pricing pages.</p>
+
+            <h3 class="feature-panel__title">Why is it relevant to this audience?</h3>
+            <p>Most beginners can make a chatbot work once, but they often miss the details that make it reliable: where to store API keys, how to handle rate limits, how to keep JSON output valid, how to stream long answers, and how to avoid surprise token costs. The OpenAI docs answer those practical questions directly. They are especially useful for mobile or web app builders because they explain why API calls should go through a backend, how to manage conversation state, and how built-in tools can extend a model without requiring a separate agent framework.</p>
+            <p>A practical way to use this resource is to treat it like engineering documentation, not a textbook. Read enough to make one feature work, then return to specific pages as the feature becomes more complex. For example, a study app might begin with one text response, then add structured JSON for flashcards, streaming for faster perceived response time, and token tracking before launch. The docs support that gradual path.</p>
+
+            <h3 class="feature-panel__title">Tips for efficient use</h3>
+            <ul class="devai-check-list">
+              <li>Start with the Quickstart and get one request working before reading advanced pages.</li>
+              <li>Use the Responses API for new projects, then read Structured Output if your app needs JSON, forms, classifications, or database-ready objects.</li>
+              <li>Keep the Models and Pricing pages open while prototyping; model choice affects latency, quality, context size, and cost.</li>
+              <li>Prototype prompts in the Playground, but move API keys into server-side environment variables before connecting a real app.</li>
+              <li>When something fails, check the API reference and error-code guidance before searching third-party tutorials, because official parameter names and model support change quickly.</li>
+            </ul>
+          </div>
+
           <!-- Overview -->
           <div class="feature-panel">
             <h3 class="feature-panel__title">Overview</h3>
@@ -99,14 +123,14 @@
                   <tr><th>Model</th><th>Input / 1M tokens</th><th>Output / 1M tokens</th><th>Context</th><th>Best for</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td>GPT-5.4 nano</td><td>$0.20</td><td>$1.25</td><td>1.05M</td><td>High-volume, simple tasks</td></tr>
-                  <tr class="devai-table__highlight"><td>GPT-5.4 mini <span class="devai-badge">recommended</span></td><td>$0.75</td><td>$4.50</td><td>1.05M</td><td>Most general-purpose apps</td></tr>
-                  <tr><td>GPT-5.4</td><td>$2.50</td><td>$15.00</td><td>1.05M</td><td>Production-quality features</td></tr>
-                  <tr><td>GPT-5.4 Pro</td><td>$30.00</td><td>$180.00</td><td>1.05M</td><td>Maximum capability tasks</td></tr>
+                  <tr><td>GPT-5.4 nano</td><td>$0.20</td><td>$1.25</td><td>400K</td><td>High-volume, simple tasks</td></tr>
+                  <tr class="devai-table__highlight"><td>GPT-5.4 mini <span class="devai-badge">recommended</span></td><td>$0.75</td><td>$4.50</td><td>400K</td><td>Most general-purpose apps</td></tr>
+                  <tr><td>GPT-5.4</td><td>$2.50</td><td>$15.00</td><td>1M</td><td>Production-quality features</td></tr>
+                  <tr><td>GPT-5.5</td><td>$5.00</td><td>$30.00</td><td>1M</td><td>Complex reasoning and coding</td></tr>
                 </tbody>
               </table>
             </div>
-            <p style="font-size:12px;color:var(--devai-muted);margin:6px 0 0">All tiers: 50% discount on cached input tokens · Pricing as of 2026</p>
+            <p style="font-size:12px;color:var(--devai-muted);margin:6px 0 0">Check the live Models and Pricing pages before launch; model prices and limits change quickly.</p>
           </div>
 
           <!-- What's in it? -->
@@ -133,7 +157,7 @@
                 <span class="devai-icon-list__icon">📋</span>
                 <div class="devai-icon-list__body">
                   <strong>Structured Outputs</strong>
-                  <span>Pass a JSON Schema as <code>response_format</code> and GPT-5.4 is <em>guaranteed</em> to return valid JSON matching your schema — no parse failures, no hallucinated fields.</span>
+                  <span>Pass a JSON Schema as <code>response_format</code> and supported OpenAI models return valid JSON matching your schema — fewer parse failures and hallucinated fields.</span>
                 </div>
               </li>
               <li>
@@ -161,7 +185,7 @@
             <ul class="devai-check-list">
               <li><strong>Financial stakes are real:</strong> Token costs accumulate fast. The docs explain how conversation history grows across turns and how to trim it before costs spiral.</li>
               <li><strong>Prompt caching saves money immediately:</strong> Cached input tokens are discounted 50% — if your app sends the same system prompt on every request, enabling caching can cut input costs in half from day one.</li>
-              <li><strong>Tier selection matters:</strong> Start with <strong>mini</strong> ($0.75/1M) for most features. Only upgrade to full GPT-5.4 ($2.50/1M) when output quality genuinely demands it. Most CRUD-style AI features never need to.</li>
+              <li><strong>Tier selection matters:</strong> Start with <strong>mini</strong> or <strong>nano</strong> for most features. Only upgrade to full GPT-5.4 or GPT-5.5 when output quality genuinely demands it. Most CRUD-style AI features never need to.</li>
               <li><strong>Error handling is documented:</strong> The Error Codes reference lists every status code the API can return (400, 401, 429, 500) with exact recovery guidance — essential for production deployments.</li>
               <li><strong>Model selection is a decision, not a default:</strong> The Models overview compares all tiers on capability, speed, and pricing so you can make an informed choice before you write a single line of code.</li>
             </ul>
@@ -170,7 +194,7 @@
           <!-- Callout -->
           <div class="devai-callout">
             <p class="devai-callout__label">Key concept: Structured Outputs</p>
-            <p>OpenAI's <strong>Structured Outputs</strong> — fully supported across GPT-5.4 — lets you pass a JSON Schema in <code>response_format</code> and the model is <em>guaranteed</em> to return valid JSON matching your schema exactly. This eliminates the most common failure mode in AI-powered apps: trying to <code>JSON.parse()</code> a response and getting a <code>SyntaxError</code> because the model added a sentence before the JSON. Use <code>response_format={"type": "json_schema", "json_schema": {...}}</code> for any structured data extraction task.</p>
+            <p>OpenAI's <strong>Structured Outputs</strong> lets you pass a JSON Schema in <code>response_format</code> so supported models return JSON matching your schema. This reduces a common failure mode in AI-powered apps: trying to <code>JSON.parse()</code> a response and getting a <code>SyntaxError</code> because the model added a sentence before the JSON. Use <code>response_format={"type": "json_schema", "json_schema": {...}}</code> for any structured data extraction task.</p>
           </div>
 
           <!-- Tips -->
@@ -180,7 +204,7 @@
               <li>Start with the <strong>Quickstart</strong> section before reading anything else — it gets you a working Python or Node.js API call in under 10 minutes and gives you a concrete foundation before you go deeper into any specific feature.</li>
               <li>The <strong>Chat Completions</strong> guide is the single most important page in the documentation for most use cases. Read it carefully from top to bottom, especially the section explaining how the <code>messages</code> array works — this is the concept that takes the longest to fully internalize.</li>
               <li>Use the <strong>interactive Playground</strong> (linked from platform.openai.com) to experiment with different system prompts, temperatures, and models before writing a single line of code. It shows you token counts in real time and helps you prototype fast.</li>
-              <li>Check the <strong>Models</strong> page and pricing calculator early. The current lineup is GPT-5.4 ($2.50/$15 per 1M in/out), GPT-5.4 mini ($0.75/$4.50), and GPT-5.4 nano ($0.20/$1.25). Start with mini or nano and only upgrade when needed — for most CRUD-style AI features, nano is more than capable. Cached inputs get a 50% discount automatically.</li>
+              <li>Check the <strong>Models</strong> page and pricing calculator early. Start with mini or nano and only upgrade when needed — for most CRUD-style AI features, smaller models are often enough. Cached inputs can reduce repeated prompt costs.</li>
               <li>When you hit errors in production, go directly to the <strong>Error Codes</strong> reference page — it lists every status code the API can return (400, 401, 429, 500) and explains exactly what each one means and how to recover from it.</li>
             </ul>
           </aside>

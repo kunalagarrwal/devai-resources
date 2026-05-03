@@ -18,7 +18,7 @@ The site was built as a technical writing project for a Penn State course, with 
 
 | Resource | Difficulty | What you'll learn |
 |---|---|---|
-| [OpenAI Platform Documentation](openai-docs.html) | Beginner | GPT-5.4 family, Chat Completions, Structured Outputs, Responses API |
+| [OpenAI Platform Documentation](openai-docs.html) | Beginner | GPT-5.5 / GPT-5.4 family, Responses API, Structured Outputs |
 | [Anthropic API Documentation](anthropic.html) | Intermediate | Claude Sonnet 4.6 / Opus 4.7, Extended Thinking, Prompt Caching |
 | [Hugging Face](huggingface.html) | Intermediate | Model Hub (2M+ models), Inference Providers, Transformers library |
 | [OpenAI Tokenizer & Tiktoken](tokenizer.html) | Beginner | Token counting, o200k_base encoding, cost management |
@@ -44,6 +44,7 @@ devai-resources/
 ├── tokenizer.html          # OpenAI Tokenizer & Tiktoken resource page
 ├── langchain.html          # LangChain resource page
 ├── prompting-guide.html    # Prompt Engineering Guide resource page
+├── reflection.html         # Optional rhetorical reflection page
 ├── style.css               # All styles (Apple-inspired design, devai- prefix scoping)
 ├── search.js               # Client-side search with relevance scoring
 ├── ui.js                   # Copy buttons + back-to-top (runs on all pages)
@@ -89,7 +90,7 @@ npx serve .
 
 All resource pages are kept up to date with current (2026) information:
 
-- **OpenAI** — GPT-5.4 family pricing, Responses API, Structured Outputs
+- **OpenAI** — GPT-5.5 / GPT-5.4 family, Responses API, Structured Outputs
 - **Anthropic** — Claude Opus 4.7 / Sonnet 4.6 / Haiku 4.5, Extended Thinking, Batch API
 - **Hugging Face** — 2M+ models, Inference Providers, GitHub Copilot integration (Sept 2025), SOC 2
 - **Tiktoken** — o200k_base encoding for all current OpenAI models

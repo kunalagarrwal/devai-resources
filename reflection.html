@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reflection — DevAI Resources</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- GITHUB PAGES ONLY — do not paste this into WordPress -->
+  <header class="devai-header">
+    <div class="devai-header__inner">
+      <a class="devai-brand" href="index.html">DevAI Resources</a>
+      <nav class="devai-nav" aria-label="Primary">
+        <ul class="devai-nav__list">
+          <li><a href="index.html" class="devai-nav__link">Home</a></li>
+          <li><a href="prompting-guide.html" class="devai-nav__link">Prompting Guide</a></li>
+          <li><a href="openai-docs.html" class="devai-nav__link">OpenAI Docs</a></li>
+          <li><a href="anthropic.html" class="devai-nav__link">Anthropic</a></li>
+          <li><a href="huggingface.html" class="devai-nav__link">Hugging Face</a></li>
+          <li><a href="tokenizer.html" class="devai-nav__link">Tokenizer</a></li>
+          <li><a href="langchain.html" class="devai-nav__link">LangChain</a></li>
+          <li><a href="reflection.html" class="devai-nav__link is-current">Reflection</a></li>
+        </ul>
+        <div class="devai-search" id="devaiSearch">
+          <button class="devai-search__btn" id="devaiSearchToggle" aria-label="Search" aria-expanded="false">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span class="devai-search__shortcut">&#8984;K</span>
+          </button>
+          <div class="devai-search__popover" id="devaiSearchPopover">
+            <input
+              type="text"
+              class="devai-search__input"
+              id="devaiSearchInput"
+              placeholder="Search resources&#8230;"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <div class="devai-search__results" id="devaiSearchResults"></div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <section class="band band--white band--tight-top">
+      <div class="layout-constrain">
+        <div class="resource-lede">
+          <div class="resource-lede__tags">
+            <span class="resource-lede__tag">Reflection</span>
+            <span class="resource-lede__tag">Rhetorical Choices</span>
+            <span class="resource-lede__tag">Design Rationale</span>
+          </div>
+          <h1 class="resource-lede__title">Reflection</h1>
+          <p class="resource-lede__back"><a href="index.html">&larr; Back to all resources</a></p>
+          <p class="devai-section-lead">This page explains the main rhetorical choices behind DevAI Resources for the same audience as the rest of the site: CS students and developers who want to integrate AI into their own applications.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band--tint">
+      <div class="layout-constrain">
+        <div class="article-stack">
+          <div class="feature-panel">
+            <h2 class="feature-panel__title">1. Developer-Centered Scope</h2>
+            <p>I chose resources that map to the actual sequence of building an AI feature: learn prompting, choose an API provider, understand open-source alternatives, control tokens and cost, then use a framework when the app becomes more complex. This keeps the guide from becoming a general list of AI links. Every abstract answers the same practical question: how does this help a developer move from idea to working integration?</p>
+          </div>
+
+          <div class="feature-panel">
+            <h2 class="feature-panel__title">2. Repeated Abstract Structure</h2>
+            <p>Each resource page uses the same four headings: what the resource is, what it contains, why it matters for this audience, and how to use it efficiently. That repetition is intentional. Developers often scan documentation rather than read linearly, so a predictable structure lets readers compare resources quickly and jump to the part they need.</p>
+          </div>
+
+          <div class="feature-panel">
+            <h2 class="feature-panel__title">3. Practical Evaluation Over Hype</h2>
+            <p>The abstracts avoid treating AI tools as automatically useful. Instead, they emphasize tradeoffs: provider cost, context limits, self-hosting requirements, model selection, prompt reliability, and framework complexity. This choice fits the site's purpose because the audience needs decision support, not marketing language. The guide encourages readers to ask what a tool is best for and when it may be unnecessary.</p>
+          </div>
+
+          <div class="feature-panel">
+            <h2 class="feature-panel__title">4. Scannable Interface Design</h2>
+            <p>The site uses cards, tables, tags, navigation links, and short lists to make technical information easier to browse. The visual design is restrained because the subject is developer work: the layout should help readers compare tools, find tips, and return later as a reference. The search button and resource navigation support repeated use after the first reading.</p>
+          </div>
+
+          <div class="feature-panel">
+            <h2 class="feature-panel__title">5. Current but Cautious Technical Claims</h2>
+            <p>Because AI APIs change quickly, I used official documentation pages as the basis for model and feature descriptions, and I focused the abstracts on stable concepts when possible: API structure, token counting, prompt design, model cards, retrieval, and observability. Specific model names are included where they help readers orient themselves, but the larger purpose is to teach how to evaluate resources as they change.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="devai-footer">
+    <div class="devai-footer__inner">
+      <p>DevAI Resources &mdash; Kunal Agarwal &mdash; Penn State University &mdash; <a href="https://sites.psu.edu/devairesources">sites.psu.edu/devairesources</a></p>
+    </div>
+  </footer>
+
+  <script src="search.js"></script>
+  <script src="ui.js"></script>
+</body>
+</html>

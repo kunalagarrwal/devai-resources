@@ -21,6 +21,7 @@
           <li><a href="huggingface.html" class="devai-nav__link">Hugging Face</a></li>
           <li><a href="tokenizer.html" class="devai-nav__link">Tokenizer</a></li>
           <li><a href="langchain.html" class="devai-nav__link">LangChain</a></li>
+          <li><a href="reflection.html" class="devai-nav__link">Reflection</a></li>
         </ul>
         <div class="devai-search" id="devaiSearch">
           <button class="devai-search__btn" id="devaiSearchToggle" aria-label="Search" aria-expanded="false">
@@ -87,6 +88,30 @@
     <section class="band band--tint">
       <div class="layout-constrain">
         <div class="article-stack">
+
+          <div class="feature-panel assignment-abstract">
+            <h2 class="feature-panel__title">Resource Abstract</h2>
+
+            <h3 class="feature-panel__title">What is this?</h3>
+            <p>The <a href="https://www.promptingguide.ai" target="_blank">Prompt Engineering Guide</a> is a free, community-maintained learning site about designing effective prompts for large language models. In this resource guide, it serves as the conceptual foundation: before a developer worries about SDKs or frameworks, they need to understand how instructions, context, examples, and output formats shape model behavior.</p>
+
+            <h3 class="feature-panel__title">What is in it?</h3>
+            <p>The site introduces prompt basics and then moves into techniques such as zero-shot prompting, few-shot prompting, chain-of-thought prompting, self-consistency, generated knowledge, prompt chaining, ReAct, retrieval-augmented generation, automatic prompt engineering, and prompt injection. Many entries include definitions, short examples, research references, and notes about when a technique is appropriate. Its scope is broader than one provider, so the ideas apply across OpenAI, Claude, Hugging Face models, and frameworks such as LangChain.</p>
+
+            <h3 class="feature-panel__title">Why is it relevant to this audience?</h3>
+            <p>For students and developers building AI features, bad prompting often looks like a software bug: the model returns inconsistent JSON, ignores an instruction, invents information, or gives answers in the wrong tone. This guide helps readers diagnose those failures as design problems in the prompt, not just mysterious model behavior. It is especially useful for app builders because prompts become part of the product: they define the assistant's role, boundaries, examples, refusal behavior, and response format. Strong prompts reduce retries, lower cost, and make the user experience feel more dependable.</p>
+            <p>The guide is also valuable because it gives shared vocabulary. Terms like zero-shot, few-shot, chain-of-thought, ReAct, and RAG help developers explain design decisions to teammates and instructors. Instead of saying "I changed the prompt until it worked," a student can describe the actual technique used and why it fits the task. That makes prompt design feel like an engineering choice rather than trial and error.</p>
+
+            <h3 class="feature-panel__title">Tips for efficient use</h3>
+            <ul class="devai-check-list">
+              <li>Read the basics first, especially the parts on instruction, context, examples, and output format.</li>
+              <li>Use few-shot examples when the model must follow a specific format or classification pattern.</li>
+              <li>Test prompts with realistic edge cases, not only easy examples.</li>
+              <li>Pair prompting techniques with structured-output features when your app needs machine-readable data.</li>
+              <li>Return to the prompt injection and safety sections before deploying a public chatbot or agent.</li>
+              <li>Keep a prompt changelog while testing. Record the old prompt, the failure case, the revision, and the result so improvements are traceable instead of accidental. This also makes the final project easier to explain during review, revision, and final presentation.</li>
+            </ul>
+          </div>
 
           <!-- Overview -->
           <div class="feature-panel">

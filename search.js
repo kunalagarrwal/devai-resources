@@ -5,14 +5,14 @@
     {
       title:   "OpenAI Platform Documentation",
       url:     "openai-docs.html",
-      tags:    ["openai", "gpt-4o", "chat completions", "function calling", "api", "rest", "python", "tokens", "rate limits"],
-      excerpt: "Official reference for the OpenAI API — Chat Completions, GPT-4o, token management, function calling, and pricing."
+      tags:    ["openai", "gpt-5.5", "responses api", "structured output", "function calling", "api", "rest", "python", "tokens", "rate limits"],
+      excerpt: "Official reference for the OpenAI API — Responses API, Structured Outputs, token management, function calling, and pricing."
     },
     {
       title:   "Anthropic API Documentation",
       url:     "anthropic.html",
       tags:    ["anthropic", "claude", "messages api", "tool use", "prompt caching", "200k", "context window", "haiku", "sonnet", "opus"],
-      excerpt: "Developer docs for Claude — 200k token context window, Messages API, tool use, and up to 90% cost savings via prompt caching."
+      excerpt: "Developer docs for Claude — Messages API, long context windows, tool use, prompt caching, and model selection."
     },
     {
       title:   "Hugging Face",
@@ -37,6 +37,12 @@
       url:     "prompting-guide.html",
       tags:    ["prompting", "few-shot", "chain-of-thought", "zero-shot", "cot", "react", "techniques", "system prompt", "prompt engineering"],
       excerpt: "Comprehensive reference for prompt engineering — zero-shot, few-shot, chain-of-thought, ReAct, and advanced techniques."
+    },
+    {
+      title:   "Reflection",
+      url:     "reflection.html",
+      tags:    ["reflection", "rhetorical analysis", "design rationale", "audience", "choices"],
+      excerpt: "Rhetorical reflection explaining the guide's audience, structure, design choices, and technical-claim strategy."
     }
   ];
 
